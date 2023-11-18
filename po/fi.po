@@ -1,0 +1,535 @@
+# Finnish translation for gnome-sound-recorder.
+# Copyright (C) 2013 gnome-sound-recorder's COPYRIGHT HOLDER
+# This file is distributed under the same license as the gnome-sound-recorder package.
+# Juhani Numminen <juhaninumminen0@gmail.com>, 2014.
+# Jiri Grönroos <jiri.gronroos+l10n@iki.fi>, 2013, 2014, 2016, 2017.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: gnome-sound-recorder master\n"
+"Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-sound-recorder/"
+"issues\n"
+"POT-Creation-Date: 2020-09-09 18:18+0000\n"
+"PO-Revision-Date: 2020-09-11 19:45+0300\n"
+"Last-Translator: Jiri Grönroos <jiri.gronroos+l10n@iki.fi>\n"
+"Language-Team: suomi <lokalisointi-lista@googlegroups.com>\n"
+"Language: fi\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 2.4.1\n"
+
+#: data/appdata/org.gnome.SoundRecorder.metainfo.xml.in.in:5
+#: data/org.gnome.SoundRecorder.desktop.in.in:4 data/ui/window.ui:28
+#: src/application.js:32
+msgid "Sound Recorder"
+msgstr "Ääninauhuri"
+
+#: data/appdata/org.gnome.SoundRecorder.metainfo.xml.in.in:6
+msgid "A simple, modern sound recorder for GNOME"
+msgstr "Yksinkertainen ja nykyaikainen ääninauhuri Gnomelle"
+
+#: data/appdata/org.gnome.SoundRecorder.metainfo.xml.in.in:10
+msgid ""
+"Sound Recorder provides a simple and modern interface that provides a "
+"straight-forward way to record and play audio. It allows you to do basic "
+"editing, and create voice memos."
+msgstr ""
+"Ääninauhuri tarjoaa pelkistetyn ja nykyaikaisen käyttöliittymän, jonka "
+"avulla äänen tallentaminen ja toistaminen käy ketterästi. Sovelluksen avulla "
+"voit tehdä pieniä muokkauksia ja nauhoittaa äänimuistioita."
+
+#: data/appdata/org.gnome.SoundRecorder.metainfo.xml.in.in:15
+msgid ""
+"Sound Recorder automatically handles the saving process so that you do not "
+"need to worry about accidentally discarding the previous recording."
+msgstr ""
+"Ääninauhuri käsittelee tallennuksen automaattisesti, joten et vahingossakaan "
+"hävitä aiempaa nauhoitustasi."
+
+#: data/appdata/org.gnome.SoundRecorder.metainfo.xml.in.in:19
+msgid "Supported audio formats:"
+msgstr "Tuetut äänimuodot:"
+
+#: data/appdata/org.gnome.SoundRecorder.metainfo.xml.in.in:21
+msgid "Ogg Vorbis, Opus, FLAC, MP3 and MOV"
+msgstr "Ogg Vorbis, Opus, FLAC, MP3 ja MOV"
+
+#: data/appdata/org.gnome.SoundRecorder.metainfo.xml.in.in:50
+msgid "The GNOME Project"
+msgstr "Gnome-projekti"
+
+#: data/org.gnome.SoundRecorder.desktop.in.in:5
+msgid "Record sound via the microphone and play it back"
+msgstr "Tallenna ääntä mikrofonilta ja toista tallenteita"
+
+#. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
+#: data/org.gnome.SoundRecorder.desktop.in.in:10
+msgid "Audio;Application;Record;"
+msgstr "Audio;Application;Record;ääni;sovellus;nauhuri;nauhoitin;"
+
+#: data/org.gnome.SoundRecorder.gschema.xml.in:16
+msgid "Window size"
+msgstr "Ikkunan koko"
+
+#: data/org.gnome.SoundRecorder.gschema.xml.in:17
+msgid "Window size (width and height)."
+msgstr "Ikkunan koko (leveys ja korkeus)."
+
+#: data/org.gnome.SoundRecorder.gschema.xml.in:21
+msgid "Window position"
+msgstr "Ikkunan sijainti"
+
+#: data/org.gnome.SoundRecorder.gschema.xml.in:22
+msgid "Window position (x and y)."
+msgstr "Ikkunan sijainti (x ja y)."
+
+#: data/org.gnome.SoundRecorder.gschema.xml.in:26
+msgid "Maps media types to audio encoder preset names."
+msgstr "Liittää mediatyypit äänikoodausesiasetusten nimiin."
+
+#: data/org.gnome.SoundRecorder.gschema.xml.in:27
+msgid ""
+"Maps media types to audio encoder preset names. If there is no mapping set, "
+"the default encoder settings will be used."
+msgstr ""
+"Liittää mediatyypit äänikoodausesiasetusten nimiin. Jos liitosta ei ole "
+"tehty, käytetään oletuskoodausasetuksia."
+
+#: data/org.gnome.SoundRecorder.gschema.xml.in:31
+msgid "Available channels"
+msgstr "Käytettävissä olevat kanavat"
+
+#: data/org.gnome.SoundRecorder.gschema.xml.in:32
+msgid ""
+"Maps available channels. If there is not no mapping set, stereo channel will "
+"be used by default."
+msgstr ""
+"Kartoittaa saatavilla olevat kanavat. Jos kartoitusta ei ole asetettu, "
+"stereokanavaa käytetään oletusarvoisesti."
+
+#: data/ui/help-overlay.ui:15
+msgctxt "shortcut window"
+msgid "General"
+msgstr "Yleiset"
+
+#: data/ui/help-overlay.ui:20
+msgctxt "shortcut window"
+msgid "Record"
+msgstr "Nauhoita"
+
+#: data/ui/help-overlay.ui:27
+msgctxt "shortcut window"
+msgid "Stop Recording"
+msgstr "Lopeta nauhoitus"
+
+#: data/ui/help-overlay.ui:34
+msgctxt "shortcut window"
+msgid "Play / Pause / Resume"
+msgstr "Toista / keskeytä / jatka"
+
+#: data/ui/help-overlay.ui:42
+msgctxt "shortcut window"
+msgid "Delete"
+msgstr "Poista"
+
+#: data/ui/help-overlay.ui:49
+msgctxt "shortcut window"
+msgid "Open menu"
+msgstr "Avaa valikko"
+
+#: data/ui/help-overlay.ui:56
+msgctxt "shortcut window"
+msgid "Keyboard shortcuts"
+msgstr "Pikanäppäimet"
+
+#: data/ui/help-overlay.ui:63
+msgctxt "shortcut window"
+msgid "Quit"
+msgstr "Lopeta"
+
+#: data/ui/help-overlay.ui:71
+msgctxt "shortcut window"
+msgid "Recording"
+msgstr "Nauhoitus"
+
+#: data/ui/help-overlay.ui:76
+msgctxt "shortcut window"
+msgid "Seek Backward"
+msgstr "Kelaa taakse"
+
+#: data/ui/help-overlay.ui:83
+msgctxt "shortcut window"
+msgid "Seek Forward"
+msgstr "Kelaa eteen"
+
+#: data/ui/help-overlay.ui:90
+msgctxt "shortcut window"
+msgid "Rename"
+msgstr "Nimeä uudelleen"
+
+#: data/ui/help-overlay.ui:97
+msgctxt "shortcut window"
+msgid "Export"
+msgstr "Vie"
+
+#: data/ui/recorder.ui:72
+msgid "Resume Recording"
+msgstr "Jatka nauhoitusta"
+
+#: data/ui/recorder.ui:96
+msgid "Pause Recording"
+msgstr "Keskeytä nauhoitus"
+
+#: data/ui/recorder.ui:128
+msgid "Stop Recording"
+msgstr "Lopeta nauhoitus"
+
+#: data/ui/recorder.ui:157
+msgid "Delete Recording"
+msgstr "Poista nauhoitus"
+
+#: data/ui/row.ui:165 data/ui/row.ui:444
+msgid "Export"
+msgstr "Vie"
+
+#: data/ui/row.ui:189 data/ui/row.ui:440
+msgid "Rename"
+msgstr "Nimeä uudelleen"
+
+#: data/ui/row.ui:241
+msgid "Save"
+msgstr "Tallenna"
+
+#: data/ui/row.ui:278 src/recorderWidget.js:100
+msgid "Delete"
+msgstr "Poista"
+
+#: data/ui/row.ui:313
+msgid "Seek 10s Backward"
+msgstr "Kelaa 10 s taakse"
+
+#: data/ui/row.ui:341
+msgid "Play"
+msgstr "Toista"
+
+#: data/ui/row.ui:367
+msgid "Pause"
+msgstr "Tauko"
+
+#: data/ui/row.ui:399
+msgid "Seek 10s Forward"
+msgstr "Kelaa 10 s eteen"
+
+#: data/ui/window.ui:60
+msgid "Record"
+msgstr "Nauhoita"
+
+#: data/ui/window.ui:149
+msgid "Add Recordings"
+msgstr "Lisää nauhoitteita"
+
+#: data/ui/window.ui:166
+msgid "Use the <b>Record</b> button to make sound recordings"
+msgstr "Napsauta <b>Nauhoita</b> tallentaaksesi ääntä"
+
+#: data/ui/window.ui:237
+msgid "Undo"
+msgstr "Kumoa"
+
+#: data/ui/window.ui:254
+msgid "Close"
+msgstr "Sulje"
+
+#: data/ui/window.ui:290
+msgid "Preferred Format"
+msgstr "Ensisijainen muoto"
+
+#: data/ui/window.ui:292
+msgid "Vorbis"
+msgstr "Vorbis"
+
+#: data/ui/window.ui:297
+msgid "Opus"
+msgstr "Opus"
+
+#: data/ui/window.ui:302
+msgid "FLAC"
+msgstr "FLAC"
+
+#: data/ui/window.ui:307
+msgid "MP3"
+msgstr "MP3"
+
+#: data/ui/window.ui:312
+msgid "M4A"
+msgstr "M4A"
+
+#: data/ui/window.ui:318
+msgid "Audio Channel"
+msgstr "Äänikanava"
+
+#: data/ui/window.ui:320
+msgid "Stereo"
+msgstr "Stereo"
+
+#: data/ui/window.ui:325
+msgid "Mono"
+msgstr "Mono"
+
+#: data/ui/window.ui:332
+msgid "_Keyboard Shortcuts"
+msgstr "_Pikanäppäimet"
+
+#: data/ui/window.ui:337
+msgid "About Sound Recorder"
+msgstr "Tietoja - Ääninauhuri"
+
+#. Translators: Replace "translator-credits" with your names, one name per line
+#: src/application.js:129
+msgid "translator-credits"
+msgstr ""
+"Juhani Numminen, 2014\n"
+"Jiri Grönroos, 2013-2020"
+
+#: src/application.js:131
+msgid "A Sound Recording Application for GNOME"
+msgstr "Äänen nauhoittamiseen tarkoitettu sovellus Gnomelle"
+
+#. Translators: ""Recording %d"" is the default name assigned to a file created
+#. by the application (for example, "Recording 1").
+#: src/recorder.js:113
+#, javascript-format
+msgid "Recording %d"
+msgstr "Nauhoitus %d"
+
+#: src/recorderWidget.js:94
+msgid "Delete recording?"
+msgstr "Poistetaanko nauhoitus?"
+
+#: src/recorderWidget.js:95
+msgid "This recording will not be saved."
+msgstr "Tätä nauhoitusta ei tallenneta."
+
+#: src/recorderWidget.js:99
+msgid "Resume"
+msgstr "Jatka"
+
+#. Necessary code to move old recordings into the new location for few releases
+#. FIXME: Remove by 3.40/3.42
+#: src/recordingList.js:42
+msgid "Recordings"
+msgstr "Nauhoitukset"
+
+#. Translators: ""%s (Old)"" is the new name assigned to a file moved from
+#. the old recordings location
+#: src/recordingList.js:59
+#, javascript-format
+msgid "%s (Old)"
+msgstr "%s (vanha)"
+
+#: src/row.js:71
+msgid "Export Recording"
+msgstr "Vie nauhoitus"
+
+#: src/row.js:71
+msgid "_Export"
+msgstr "_Vie"
+
+#: src/row.js:71
+msgid "_Cancel"
+msgstr "_Peru"
+
+#: src/utils.js:48
+msgid "Yesterday"
+msgstr "Eilen"
+
+#: src/utils.js:50
+#, javascript-format
+msgid "%d day ago"
+msgid_plural "%d days ago"
+msgstr[0] "%d päivä sitten"
+msgstr[1] "%d päivää sitten"
+
+#: src/utils.js:52
+msgid "Last week"
+msgstr "Viime viikolla"
+
+#: src/utils.js:54
+#, javascript-format
+msgid "%d week ago"
+msgid_plural "%d weeks ago"
+msgstr[0] "%d viikko sitten"
+msgstr[1] "%d viikkoa sitten"
+
+#: src/utils.js:56
+msgid "Last month"
+msgstr "Viime kuussa"
+
+#: src/utils.js:58
+#, javascript-format
+msgid "%d month ago"
+msgid_plural "%d months ago"
+msgstr[0] "%d kuukausi sitten"
+msgstr[1] "%d kuukautta sitten"
+
+#: src/utils.js:60
+msgid "Last year"
+msgstr "Viime vuonna"
+
+#: src/utils.js:62
+#, javascript-format
+msgid "%d year ago"
+msgid_plural "%d years ago"
+msgstr[0] "%d vuosi sitten"
+msgstr[1] "%d vuotta sitten"
+
+#: src/window.js:71
+#, javascript-format
+msgid "\"%s\" deleted"
+msgstr "\"%s\" poistettu"
+
+#~ msgid "Cancel Recording"
+#~ msgstr "Peru nauhoitus"
+
+#~ msgid "Sound Recorder started"
+#~ msgstr "Ääninauhuri käynnistyi"
+
+#~ msgid "Microphone volume level"
+#~ msgstr "Mikrofonin äänentaso"
+
+#~ msgid "Microphone volume level."
+#~ msgstr "Mikrofonin äänenvoimakkuuden taso."
+
+#~ msgid "Speaker volume level"
+#~ msgstr "Kaiuttimen äänentaso"
+
+#~ msgid "Speaker volume level."
+#~ msgstr "Kaiuttimen äänenvoimakkuuden taso."
+
+#~| msgid "SoundRecorder"
+#~ msgid "org.gnome.SoundRecorder"
+#~ msgstr "org.gnome.SoundRecorder"
+
+#~ msgid "SoundRecorder"
+#~ msgstr "Ääninauhuri"
+
+#~ msgid "Info"
+#~ msgstr "Info"
+
+#~ msgid "Done"
+#~ msgstr "Valmis"
+
+#~ msgctxt "File Name"
+#~ msgid "Name"
+#~ msgstr "Nimi"
+
+#~ msgid "Source"
+#~ msgstr "Lähde"
+
+#~ msgid "Date Modified"
+#~ msgstr "Muokkauspäivä"
+
+#~ msgid "Date Created"
+#~ msgstr "Luontipäivä"
+
+#~ msgctxt "Media Type"
+#~ msgid "Type"
+#~ msgstr "Tyyppi"
+
+#~ msgid "Unknown"
+#~ msgstr "Tuntematon"
+
+#~ msgid "Preferences"
+#~ msgstr "Asetukset"
+
+#~ msgid "Recording…"
+#~ msgstr "Nauhoitetaan…"
+
+#~ msgid "%d Recorded Sound"
+#~ msgid_plural "%d Recorded Sounds"
+#~ msgstr[0] "%d nauhoitettu ääni"
+#~ msgstr[1] "%d nauhoitettua ääntä"
+
+#~ msgid "No Recorded Sounds"
+#~ msgstr "Ei nauhoitettuja ääniä"
+
+#~ msgid "MOV"
+#~ msgstr "MOV"
+
+#~ msgid "Load More"
+#~ msgstr "Lataa lisää"
+
+#~ msgid "Unable to play recording"
+#~ msgstr "Nauhoituksen toistaminen epäonnistui"
+
+#~ msgid "Default mode"
+#~ msgstr "Oletustila"
+
+#~ msgid "Volume"
+#~ msgstr "Äänenvoimakkuus"
+
+#~ msgid "Microphone"
+#~ msgstr "Mikrofoni"
+
+#~ msgid "Unable to create Recordings directory."
+#~ msgstr "Nauhoitekansion luominen epäonnistui."
+
+#~ msgid "Please install the GStreamer 1.0 PulseAudio plugin."
+#~ msgstr "Asenna GStreamer 1.0 PulseAudio -liitännäinen."
+
+#~ msgid "Your audio capture settings are invalid."
+#~ msgstr "Äänen tallennusasetukset ovat virheelliset."
+
+#~ msgid "Not all elements could be created."
+#~ msgstr "Joidenkin elementtien luominen epäonnistui."
+
+#, fuzzy
+#~| msgid "Not all of the elements were linked"
+#~ msgid "Not all of the elements were linked."
+#~ msgstr "Kaikki elementit eivät olleet linkitettyjä"
+
+#~ msgid "No Media Profile was set."
+#~ msgstr "Mediaprofiilia ei ole asetettu."
+
+#, fuzzy
+#~| msgid ""
+#~| "Unable to set the pipeline \n"
+#~| " to the recording state"
+#~ msgid ""
+#~ "Unable to set the pipeline \n"
+#~ " to the recording state."
+#~ msgstr ""
+#~ "Putken asettaminen \n"
+#~ " nauhoitustilaan epäonnistui"
+
+#~ msgid "Clip %d"
+#~ msgstr "Nauhoitus %d"
+
+#~ msgid "About"
+#~ msgstr "Tietoja"
+
+#~ msgid "%Y-%m-%d %H:%M:%S"
+#~ msgstr "%d.%m.%Y %H:%M:%S"
+
+#~ msgid "Preferred media type for encoding audio when recording"
+#~ msgstr "Ensisijainen äänikoodauksen tyyppi nauhoittaessa"
+
+#~ msgid ""
+#~ "Preferred media type for encoding audio when recording. 'audio/x-vorbis' "
+#~ "for Ogg Vorbis, or 'audio/mpeg' for MP3, for example. This is not a MIME "
+#~ "type."
+#~ msgstr ""
+#~ "Ensisijainen äänikoodauksen tyyppi nauhoittaessa. Esimerkiksi ’audio/x-"
+#~ "vorbis’ Ogg Vorbikselle tai ’audio/mpeg’ MP3:lle. Kyseessä ei ole MIME-"
+#~ "tyyppi."
+
+#~ msgid "Finish"
+#~ msgstr "Valmis"
+
+#~ msgid "Audio from %Y-%m-%d %H:%M:%S"
+#~ msgstr "Nauhoite %d-%m-%Y %H:%M:%S"
+
+#~ msgid "Error: "
+#~ msgstr "Virhe:"

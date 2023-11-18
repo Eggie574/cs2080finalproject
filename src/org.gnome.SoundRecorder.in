@@ -1,0 +1,27 @@
+#!@GJS@ -m
+import GLib from 'gi://GLib';
+import System from 'system'
+
+imports.package.init({
+    name: "@APPLICATION_ID@",
+    version: "@PACKAGE_VERSION@",
+    prefix: "@prefix@",
+    libdir: "@libdir@"
+});
+
+pkg.initGettext();
+pkg.initFormat();
+
+const loop = new GLib.MainLoop(null, false);
+
+import('resource:///org/gnome/SoundRecorder@profile@/js/main.js').then((main) => {
+  GLib.idle_add(GLib.PRIORITY_DEFAULT_IDLE, () => {
+    loop.quit();
+    const exitCode = imports.package.run(main);
+    System.exit(exitCode);
+    return GLib.SOURCE_REMOVE;
+  });
+})
+.catch(logError);
+
+loop.run();

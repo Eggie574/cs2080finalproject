@@ -1,0 +1,18 @@
+# List of source files containing translatable strings.
+# Please keep this file sorted alphabetically.
+data/org.gnome.SoundRecorder.desktop.in.in
+data/org.gnome.SoundRecorder.metainfo.xml.in.in
+data/org.gnome.SoundRecorder.gschema.xml.in
+data/ui/help-overlay.ui
+data/ui/recorder.ui
+data/ui/row.ui
+data/ui/window.ui
+src/application.ts
+src/main.ts
+src/recorder.ts
+src/recorderWidget.ts
+src/recordingList.ts
+src/row.ts
+src/utils.ts
+src/waveform.ts
+src/window.ts

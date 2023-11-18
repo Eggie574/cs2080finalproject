@@ -1,0 +1,42 @@
+{
+    "app-id" : "org.gnome.SoundRecorderDevel",
+    "runtime" : "org.gnome.Sdk",
+    "runtime-version" : "45",
+    "sdk" : "org.gnome.Sdk",
+    "sdk-extensions" : [
+        "org.freedesktop.Sdk.Extension.node18",
+        "org.freedesktop.Sdk.Extension.typescript"
+    ],
+    "command" : "gnome-sound-recorder",
+    "tags" : [
+        "nightly"
+    ],
+    "finish-args" : [
+        "--share=ipc",
+        "--device=dri",
+        "--socket=fallback-x11",
+        "--socket=wayland",
+        "--socket=pulseaudio",
+        "--filesystem=~/Recordings",
+        "--talk-name=org.a11y.Bus"
+    ],
+    "build-options" : {
+        "append-path" : "/usr/lib/sdk/node18/bin:/usr/lib/sdk/typescript/bin",
+        "env" : {        }
+    },
+    "modules" : [
+        {
+            "name" : "gnome-sound-recorder",
+            "buildsystem" : "meson",
+            "config-opts" : [
+                "-Dprofile=development"
+            ],
+            "sources" : [
+                {
+                    "type" : "git",
+                    "url" : "https://gitlab.gnome.org/GNOME/gnome-sound-recorder.git"
+                }
+            ]
+        }
+    ]
+}
