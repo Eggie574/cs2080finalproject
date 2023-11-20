@@ -1,0 +1,8 @@
+row.ts, ln 135 starts the export process for a recording
+ - Goal is to modify this process so that the singular export is still available, but there's a button that exports all currently made files.
+ - Solution is likely to create a for loop that asks for a save destination once, then uses the export code repeatedly on a list holding all the current recordings
+
+Find where recordings are being saved in the app
+
+Either send "Files exported" notification or display a progress bar for saving multiple files
+ - Would be nice to do both if possible
