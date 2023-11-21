@@ -47,7 +47,6 @@ export class Row extends Gtk.ListBoxRow {
             {
                 Template: 'resource:///org/gnome/SoundRecorder/ui/row.ui',
                 InternalChildren: [
-                    'playbackStack',
                     'mainStack',
                     'waveformStack',
                     'rightStack',
@@ -57,6 +56,7 @@ export class Row extends Gtk.ListBoxRow {
                     'duration',
                     'revealer',
                     'playbackControls',
+                    'playbackStack',
                     'saveBtn',
                     'playBtn',
                     'pauseBtn',
@@ -292,7 +292,7 @@ export class Row extends Gtk.ListBoxRow {
         }
 
         for (const action of this.actionGroup.list_actions()) {
-            if (action !== 'save') {
+            if (action !== 'delete' && action !== 'play' && action !== 'save') {
                 const someAction = this.actionGroup.lookup(
                     action
                 ) as Gio.SimpleAction;
@@ -337,3 +337,4 @@ export class Row extends Gtk.ListBoxRow {
         return this._state;
     }
 }
+
