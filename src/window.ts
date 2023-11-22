@@ -56,6 +56,7 @@ export class Window extends Adw.ApplicationWindow {
     private toastUndo: boolean;
     private undoSignalID: number | null;
     private undoAction: Gio.SimpleAction;
+    private exportDialog?: Gtk.FileChooserNative | null;
 
     private _state: WindowState;
 
@@ -148,6 +149,55 @@ export class Window extends Adw.ApplicationWindow {
         );
         this.insert_action_group('recorder', this.recorderWidget.actionsGroup);
         this._emptyPage.icon_name = `${pkg.name}-symbolic`;
+
+	// This currently only allows creating the name of the file to be exported,
+	// however with this, only the last recording created gets exported, seemingly because
+	//
+        const exportAllAction = new Gio.SimpleAction({ name: 'exportAll'});
+        exportAllAction.connect('activate', () => {
+            const window = this.root as Gtk.Window;
+            this.exportDialog = Gtk.FileChooserNative.new(
+                _('Export Recording'),
+                window,
+                Gtk.FileChooserAction.SAVE,
+                _('_Export'),
+                _('_Cancel')
+            );
+
+            this.exportDialog.connect(
+                'response',
+                (_dialog: Gtk.FileChooserNative, response: number) => {
+                    if (response === Gtk.ResponseType.ACCEPT) {
+                        const dest = this.exportDialog?.get_file();
+
+                        if(dest) {
+                        	for(let i = 0; i < this.recordingList.get_n_items(); i++) {
+
+                        	let curr = this.recordingList.get_item(i) as Recording;
+                        	let currFile = curr.file;
+                        	/*The way this normally functions is it'll take dest and use that to copy the file from
+                        	where the recordings are being kept. Seeing that you only get one opportunity to do that,
+                        	only one file gets exported, while the rest don't, because you can't provide another name.
+
+                        	What would be great is if there was a way to provide a folder to copy to, then using the recording's name and extension,
+                        	tell it "copy that file to this one in this location", but I've yet to figure out how to do so.
+
+                        	Not sure if for loop needs to be placed elsewhere to iterate through the recordings.*/
+
+                        	curr.save(currFile);
+                        	}
+                        }
+                    }
+                    this.exportDialog?.destroy();
+                    this.exportDialog = null;
+                }
+            );
+	    this.exportDialog.show();
+        });
+
+        // Adds the exportAll action to "win" so that it can be used as an action
+        // for the Export All button
+        this.add_action(exportAllAction);
     }
 
     public vfunc_close_request(): boolean {
@@ -240,4 +290,5 @@ export class Window extends Adw.ApplicationWindow {
     public get state(): WindowState {
         return this._state;
     }
+
 }

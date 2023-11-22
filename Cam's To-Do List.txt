@@ -6,3 +6,7 @@ Find where recordings are being saved in the app
 
 Either send "Files exported" notification or display a progress bar for saving multiple files
  - Would be nice to do both if possible
+
+ -- MUST DO --
+ COPY window.ui TO THIS BRANCH *DONE
+ FIX WHATEVER IS GOING ON WITH EXPORTING ALL FILES
