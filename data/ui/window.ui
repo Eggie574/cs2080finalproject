@@ -130,11 +130,27 @@
         <attribute name="target">mono</attribute>
       </item>
     </submenu>
+
+  <submenu>
+      <attribute translatable="yes" name="label">Audio To Text</attribute>
+      <item>
+        <attribute translatable="yes" name="label">On</attribute>
+        <attribute name="action">app.audio-to-text</attribute>
+        <attribute name="target">On</attribute>
+      </item>
+      <item>
+        <attribute translatable="yes" name="label">Off</attribute>
+        <attribute name="action">app.audio-to-text</attribute>
+        <attribute name="target">Off</attribute>
+      </item>
+    </submenu>
+
     <section>
       <item>
         <attribute name="label" translatable="yes">_Keyboard Shortcuts</attribute>
         <attribute name="action">win.show-help-overlay</attribute>
       </item>
+      
       <item>
         <attribute name="action">app.about</attribute>
         <attribute name="label" translatable="yes">About Sound Recorder</attribute>
@@ -142,3 +158,4 @@
     </section>
   </menu>
 </interface>
+

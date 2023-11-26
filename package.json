@@ -11,17 +11,20 @@
     "Christopher Davis <christopherdavis@gnome.org>"
   ],
   "license": "GPL-3.0-or-later",
-  "dependencies": {
-    "typescript": "^4.7.4"
-  },
   "devDependencies": {
+    "@types/node": "^20.9.5",
     "@typescript-eslint/eslint-plugin": "^5.33.0",
     "@typescript-eslint/parser": "^5.33.0",
     "eslint": "^8.21.0",
     "eslint-config-prettier": "^8.8.0",
-    "eslint-plugin-prettier": "^4.2.1"
+    "eslint-plugin-prettier": "^4.2.1",
+    "typescript": "5.3"
   },
   "scripts": {
     "typecheck": "tsc --strict"
+  },
+  "dependencies": {
+    "@girs/node-gio-2.0": "^2.78.0-3.2.5",
+    "node-fetch": "^2.7.0"
   }
 }

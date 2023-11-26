@@ -89,12 +89,17 @@ export class Application extends Adw.Application {
         );
     }
 
+    //add speech to text feature here
     private initAppMenu(): void {
         const profileAction = Settings.create_action('audio-profile');
         this.add_action(profileAction);
 
         const channelAction = Settings.create_action('audio-channel');
         this.add_action(channelAction);
+
+        //My speech to text button added
+        const speechText = Settings.create_action('audio-to-text');
+        this.add_action(speechText);
 
         const aboutAction = new Gio.SimpleAction({ name: 'about' });
         aboutAction.connect('activate', this.showAbout.bind(this));

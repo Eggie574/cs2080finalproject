@@ -8,6 +8,9 @@ import { Recording } from './recording.js';
 import { displayDateTime, formatTime } from './utils.js';
 import { WaveForm, WaveType } from './waveform.js';
 
+declare var require : any
+const speechConversion = require('./speechToJavascript.js');
+
 export enum RowState {
     Playing,
     Paused,
@@ -134,6 +137,7 @@ export class Row extends Gtk.ListBoxRow {
 
         const exportAction = new Gio.SimpleAction({ name: 'export' });
         exportAction.connect('activate', () => {
+
             const window = this.root as Gtk.Window;
             this.exportDialog = Gtk.FileChooserNative.new(
                 _('Export Recording'),
@@ -146,18 +150,32 @@ export class Row extends Gtk.ListBoxRow {
                 `${this.recording.name}.${this.recording.extension}`
             );
             this.exportDialog.connect(
+
                 'response',
                 (_dialog: Gtk.FileChooserNative, response: number) => {
                     if (response === Gtk.ResponseType.ACCEPT) {
+
                         const dest = this.exportDialog?.get_file();
                         if (dest) this.recording.save(dest);
+
                     }
+                    
+                    const name = 'Debugger.mp3';
+                    const path = require('path');
+                    var __dirname = '';
+                    const test = path.join(__dirname, name);
+                    speechConversion(name, test);
+
                     this.exportDialog?.destroy();
                     this.exportDialog = null;
+
                 }
             );
+
             this.exportDialog.show();
+
         });
+
         this.actionGroup.add_action(exportAction);
 
         this.saveRenameAction = new Gio.SimpleAction({
