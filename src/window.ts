@@ -33,6 +33,8 @@ import { RecorderWidget } from './recorderWidget.js';
 import { Recording } from './recording.js';
 import { Row } from './row.js';
 
+declare var require : any;
+
 enum WindowState {
     Empty,
     List,
@@ -56,6 +58,7 @@ export class Window extends Adw.ApplicationWindow {
     private toastUndo: boolean;
     private undoSignalID: number | null;
     private undoAction: Gio.SimpleAction;
+    private exportDialog?: Gtk.FileChooserNative | null;
 
     private _state: WindowState;
 
@@ -148,6 +151,73 @@ export class Window extends Adw.ApplicationWindow {
         );
         this.insert_action_group('recorder', this.recorderWidget.actionsGroup);
         this._emptyPage.icon_name = `${pkg.name}-symbolic`;
+
+	// This currently only allows creating the name of the file to be exported,
+	// however with this, only the last recording created gets exported, seemingly because
+	//
+        const exportAllAction = new Gio.SimpleAction({ name: 'exportAll'});
+        exportAllAction.connect('activate', () => {
+            const window = this.root as Gtk.Window;
+            this.exportDialog = Gtk.FileChooserNative.new(
+                _('Export Recording'),
+                window,
+                Gtk.FileChooserAction.SELECT_FOLDER,
+                _('_Export'),
+                _('_Cancel')
+            );
+
+            this.exportDialog.connect(
+                'response',
+                (_dialog: Gtk.FileChooserNative, response: number) => {
+                    if (response === Gtk.ResponseType.ACCEPT) {
+                    	// Gets the chosen folder
+                    	// Likely can use .get_current_folder(), but it might work the same way
+                        const dest = this.exportDialog?.get_file();
+
+                        if(dest) {
+                        	for(let i = 0; i < this.recordingList.get_n_items(); i++) {
+
+				// Takes the destination from the export window and gets the path to the folder
+				// Must be defined as a string because GFiles are naturally of type "string | null",
+				// and will error if not defined as a definite string
+                        	let destination = dest.get_path() as string;
+
+				// Stores currently indexed GFile from list into currFile
+                        	let currFile = this.recordingList.get_item(i) as Recording;
+
+				// Stores the name and extension of the currently indexed file
+				// Defined as strings to prevent "possible null" errors
+                        	let currName = currFile.name as string;
+                        	let currExt = currFile.extension as string;
+
+				// Stores the file name in currPath, concatenating the file name and it's extension
+				// given previously
+				// fullDestPath then stores a string with the path to the selected directory concat'd
+				// to the file name
+                        	let currPath = currName.concat(".", currExt);
+				let fullDestPath = destination.concat("/", currPath);
+
+				// Saves the file to the chosen directory, building the GFile from the given fullDestPath
+				currFile.save(Gio.File.new_for_path(fullDestPath));
+
+
+                        	}
+                        }
+                    }
+                    this.exportDialog?.destroy();
+                    this.exportDialog = null;
+                }
+            );
+	    this.exportDialog.show();
+        });
+
+
+
+
+
+        // Adds the exportAll action to "win" so that it can be used as an action
+        // for the Export All button
+        this.add_action(exportAllAction);
     }
 
     public vfunc_close_request(): boolean {
@@ -240,4 +310,5 @@ export class Window extends Adw.ApplicationWindow {
     public get state(): WindowState {
         return this._state;
     }
+
 }

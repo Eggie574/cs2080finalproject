@@ -33,6 +33,23 @@
                     </style>
                   </object>
                 </child>
+                <child>
+                  <object class="GtkButton">
+                    <property name="receives_default">False</property>
+                    <property name="halign">center</property>
+                    <property name="valign">center</property>
+                    <property name="action_name">win.exportAll</property>
+                    <child>
+                      <object class="AdwButtonContent">
+                        <property name="icon_name">document-save-symbolic</property>
+                        <property name="label" translatable="yes">Export All</property>
+                      </object>
+                    </child>
+                    <style>
+                      <class name="suggested-action"/>
+                    </style>
+                  </object>
+                </child>
                 <child type="end">
                   <object class="GtkMenuButton">
                     <property name="receives_default">False</property>
@@ -59,7 +76,7 @@
                     <property name="child">
                       <object class="AdwStatusPage" id="emptyPage">
                         <property name="title" translatable="yes">Add Recordings</property>
-                        <property name="description" translatable="yes">Use the &lt;b&gt;Record&lt;/b&gt; button to make sound recordings</property>
+                        <property name="description" translatable="yes">Use the &lt;b&gt;Record&lt;/b&gt; button to make sound recordings&#10;</property>
                       </object>
                     </property>
                   </object>
@@ -94,6 +111,9 @@
     </child>
   </template>
   <menu id="primaryMenu">
+    <item>
+      <attribute translatable="yes" name="label">Default File Path</attribute>
+    </item>
     <submenu>
       <attribute translatable="yes" name="label">Preferred Format</attribute>
       <item>
