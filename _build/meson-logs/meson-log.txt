@@ -1,0 +1,381 @@
+Build started at 2023-11-28T00:59:20.784028
+Main binary: /usr/bin/python
+Build Options: -Dprofile=development -Dprefix=/app
+Python system: Linux
+The Meson build system
+Version: 1.2.3
+Source dir: /home/chadmar/Documents/GitHub Repo Linux/cs2080finalproject
+Build dir: /home/chadmar/Documents/GitHub Repo Linux/cs2080finalproject/_build
+Build type: native build
+Project name: gnome-sound-recorder
+Project version: 43.beta
+Build machine cpu family: x86_64
+Build machine cpu: x86_64
+Host machine cpu family: x86_64
+Host machine cpu: x86_64
+Target machine cpu family: x86_64
+Target machine cpu: x86_64
+Running command: /usr/bin/git rev-parse --short HEAD
+--- stdout ---
+b482ed1
+
+--- stderr ---
+
+
+Pkg-config binary for 1 is not cached.
+Pkg-config binary missing from cross or native file, or env var undefined.
+Trying a default Pkg-config fallback at pkg-config
+Found pkg-config: /usr/bin/pkg-config (2.0.2)
+Determining dependency 'gjs-1.0' with pkg-config executable '/usr/bin/pkg-config'
+env[PKG_CONFIG_PATH]: /app/lib/pkgconfig:/app/share/pkgconfig:/usr/lib/pkgconfig:/usr/share/pkgconfig
+-----------
+Called: `/usr/bin/pkg-config --modversion gjs-1.0` -> 0
+stdout:
+1.78.0
+-----------
+env[PKG_CONFIG_PATH]: /app/lib/pkgconfig:/app/share/pkgconfig:/usr/lib/pkgconfig:/usr/share/pkgconfig
+-----------
+Called: `/usr/bin/pkg-config --cflags gjs-1.0` -> 0
+stdout:
+-I/usr/include/gjs-1.0 -I/usr/include/glib-2.0 -I/usr/lib/x86_64-linux-gnu/glib-2.0/include -I/usr/include/cairo -I/usr/include/freetype2 -I/usr/include/harfbuzz -I/usr/include/libmount -I/usr/include/blkid -I/usr/include/sysprof-6 -I/usr/include/libpng16 -I/usr/include/pixman-1 -isystem /usr/include/mozjs-115 -I/usr/include/gobject-introspection-1.0 -pthread
+-----------
+env[PKG_CONFIG_PATH]: /app/lib/pkgconfig:/app/share/pkgconfig:/usr/lib/pkgconfig:/usr/share/pkgconfig
+env[PKG_CONFIG_ALLOW_SYSTEM_LIBS]: 1
+-----------
+Called: `/usr/bin/pkg-config --libs gjs-1.0` -> 0
+stdout:
+-L/usr/lib/x86_64-linux-gnu -lgjs -lgio-2.0 -lglib-2.0 -lgobject-2.0
+-----------
+env[PKG_CONFIG_PATH]: /app/lib/pkgconfig:/app/share/pkgconfig:/usr/lib/pkgconfig:/usr/share/pkgconfig
+-----------
+Called: `/usr/bin/pkg-config --libs gjs-1.0` -> 0
+stdout:
+-lgjs -lgio-2.0 -lglib-2.0 -lgobject-2.0
+-----------
+Run-time dependency gjs-1.0 found: YES 1.78.0
+env[PKG_CONFIG_PATH]: /app/lib/pkgconfig:/app/share/pkgconfig:/usr/lib/pkgconfig:/usr/share/pkgconfig
+-----------
+Called: `/usr/bin/pkg-config --variable=gjs_console gjs-1.0` -> 0
+stdout:
+/usr/bin/gjs-console
+-----------
+Got pkgconfig variable gjs_console : /usr/bin/gjs-console
+Pkg-config binary for 1 is cached.
+Determining dependency 'gio-2.0' with pkg-config executable '/usr/bin/pkg-config'
+env[PKG_CONFIG_PATH]: /app/lib/pkgconfig:/app/share/pkgconfig:/usr/lib/pkgconfig:/usr/share/pkgconfig
+-----------
+Called: `/usr/bin/pkg-config --modversion gio-2.0` -> 0
+stdout:
+2.78.1
+-----------
+env[PKG_CONFIG_PATH]: /app/lib/pkgconfig:/app/share/pkgconfig:/usr/lib/pkgconfig:/usr/share/pkgconfig
+-----------
+Called: `/usr/bin/pkg-config --cflags gio-2.0` -> 0
+stdout:
+-I/usr/include/glib-2.0 -I/usr/lib/x86_64-linux-gnu/glib-2.0/include -I/usr/include/sysprof-6 -I/usr/include/libmount -I/usr/include/blkid -pthread
+-----------
+env[PKG_CONFIG_PATH]: /app/lib/pkgconfig:/app/share/pkgconfig:/usr/lib/pkgconfig:/usr/share/pkgconfig
+env[PKG_CONFIG_ALLOW_SYSTEM_LIBS]: 1
+-----------
+Called: `/usr/bin/pkg-config --libs gio-2.0` -> 0
+stdout:
+-L/usr/lib/x86_64-linux-gnu -lgio-2.0 -lgobject-2.0 -lglib-2.0
+-----------
+env[PKG_CONFIG_PATH]: /app/lib/pkgconfig:/app/share/pkgconfig:/usr/lib/pkgconfig:/usr/share/pkgconfig
+-----------
+Called: `/usr/bin/pkg-config --libs gio-2.0` -> 0
+stdout:
+-lgio-2.0 -lgobject-2.0 -lglib-2.0
+-----------
+Run-time dependency gio-2.0 found: YES 2.78.1
+Pkg-config binary for 1 is cached.
+Determining dependency 'glib-2.0' with pkg-config executable '/usr/bin/pkg-config'
+env[PKG_CONFIG_PATH]: /app/lib/pkgconfig:/app/share/pkgconfig:/usr/lib/pkgconfig:/usr/share/pkgconfig
+-----------
+Called: `/usr/bin/pkg-config --modversion glib-2.0` -> 0
+stdout:
+2.78.1
+-----------
+env[PKG_CONFIG_PATH]: /app/lib/pkgconfig:/app/share/pkgconfig:/usr/lib/pkgconfig:/usr/share/pkgconfig
+-----------
+Called: `/usr/bin/pkg-config --cflags glib-2.0` -> 0
+stdout:
+-I/usr/include/glib-2.0 -I/usr/lib/x86_64-linux-gnu/glib-2.0/include -I/usr/include/sysprof-6 -pthread
+-----------
+env[PKG_CONFIG_PATH]: /app/lib/pkgconfig:/app/share/pkgconfig:/usr/lib/pkgconfig:/usr/share/pkgconfig
+env[PKG_CONFIG_ALLOW_SYSTEM_LIBS]: 1
+-----------
+Called: `/usr/bin/pkg-config --libs glib-2.0` -> 0
+stdout:
+-L/usr/lib/x86_64-linux-gnu -lglib-2.0
+-----------
+env[PKG_CONFIG_PATH]: /app/lib/pkgconfig:/app/share/pkgconfig:/usr/lib/pkgconfig:/usr/share/pkgconfig
+-----------
+Called: `/usr/bin/pkg-config --libs glib-2.0` -> 0
+stdout:
+-lglib-2.0
+-----------
+Run-time dependency glib-2.0 found: YES 2.78.1
+Pkg-config binary for 1 is cached.
+Determining dependency 'gtk4' with pkg-config executable '/usr/bin/pkg-config'
+env[PKG_CONFIG_PATH]: /app/lib/pkgconfig:/app/share/pkgconfig:/usr/lib/pkgconfig:/usr/share/pkgconfig
+-----------
+Called: `/usr/bin/pkg-config --modversion gtk4` -> 0
+stdout:
+4.12.3
+-----------
+env[PKG_CONFIG_PATH]: /app/lib/pkgconfig:/app/share/pkgconfig:/usr/lib/pkgconfig:/usr/share/pkgconfig
+-----------
+Called: `/usr/bin/pkg-config --cflags gtk4` -> 0
+stdout:
+-I/usr/include/gtk-4.0 -I/usr/include/pango-1.0 -I/usr/include/gdk-pixbuf-2.0 -I/usr/include/cairo -I/usr/include/graphene-1.0 -I/usr/lib/x86_64-linux-gnu/graphene-1.0/include -mfpmath=sse -msse -msse2 -I/usr/include/freetype2 -I/usr/include/harfbuzz -I/usr/include/glib-2.0 -I/usr/lib/x86_64-linux-gnu/glib-2.0/include -I/usr/include/webp -I/usr/include/blkid -I/usr/include/pixman-1 -I/usr/include/libpng16 -I/usr/include/fribidi -I/usr/include/libmount -I/usr/include/sysprof-6 -pthread
+-----------
+env[PKG_CONFIG_PATH]: /app/lib/pkgconfig:/app/share/pkgconfig:/usr/lib/pkgconfig:/usr/share/pkgconfig
+env[PKG_CONFIG_ALLOW_SYSTEM_LIBS]: 1
+-----------
+Called: `/usr/bin/pkg-config --libs gtk4` -> 0
+stdout:
+-L/usr/lib/x86_64-linux-gnu -lgtk-4 -lharfbuzz -lpangocairo-1.0 -lpango-1.0 -lgdk_pixbuf-2.0 -lcairo-gobject -lcairo -lgraphene-1.0 -lgio-2.0 -lglib-2.0 -lgobject-2.0
+-----------
+env[PKG_CONFIG_PATH]: /app/lib/pkgconfig:/app/share/pkgconfig:/usr/lib/pkgconfig:/usr/share/pkgconfig
+-----------
+Called: `/usr/bin/pkg-config --libs gtk4` -> 0
+stdout:
+-lgtk-4 -lharfbuzz -lpangocairo-1.0 -lpango-1.0 -lgdk_pixbuf-2.0 -lcairo-gobject -lcairo -lgraphene-1.0 -lgio-2.0 -lglib-2.0 -lgobject-2.0
+-----------
+Run-time dependency gtk4 found: YES 4.12.3
+Pkg-config binary for 1 is cached.
+Determining dependency 'gstreamer-player-1.0' with pkg-config executable '/usr/bin/pkg-config'
+env[PKG_CONFIG_PATH]: /app/lib/pkgconfig:/app/share/pkgconfig:/usr/lib/pkgconfig:/usr/share/pkgconfig
+-----------
+Called: `/usr/bin/pkg-config --modversion gstreamer-player-1.0` -> 0
+stdout:
+1.22.5
+-----------
+env[PKG_CONFIG_PATH]: /app/lib/pkgconfig:/app/share/pkgconfig:/usr/lib/pkgconfig:/usr/share/pkgconfig
+-----------
+Called: `/usr/bin/pkg-config --cflags gstreamer-player-1.0` -> 0
+stdout:
+-I/usr/include/gstreamer-1.0 -I/usr/include/glib-2.0 -I/usr/lib/x86_64-linux-gnu/glib-2.0/include -I/usr/include/sysprof-6 -I/usr/include/orc-0.4 -pthread
+-----------
+env[PKG_CONFIG_PATH]: /app/lib/pkgconfig:/app/share/pkgconfig:/usr/lib/pkgconfig:/usr/share/pkgconfig
+env[PKG_CONFIG_ALLOW_SYSTEM_LIBS]: 1
+-----------
+Called: `/usr/bin/pkg-config --libs gstreamer-player-1.0` -> 0
+stdout:
+-L/usr/lib/x86_64-linux-gnu -lgstplayer-1.0 -lgobject-2.0 -lglib-2.0 -lgstvideo-1.0 -lgstbase-1.0 -lgstreamer-1.0
+-----------
+env[PKG_CONFIG_PATH]: /app/lib/pkgconfig:/app/share/pkgconfig:/usr/lib/pkgconfig:/usr/share/pkgconfig
+-----------
+Called: `/usr/bin/pkg-config --libs gstreamer-player-1.0` -> 0
+stdout:
+-lgstplayer-1.0 -lgobject-2.0 -lglib-2.0 -lgstvideo-1.0 -lgstbase-1.0 -lgstreamer-1.0
+-----------
+Run-time dependency gstreamer-player-1.0 found: YES 1.22.5
+Pkg-config binary for 1 is cached.
+Determining dependency 'libadwaita-1' with pkg-config executable '/usr/bin/pkg-config'
+env[PKG_CONFIG_PATH]: /app/lib/pkgconfig:/app/share/pkgconfig:/usr/lib/pkgconfig:/usr/share/pkgconfig
+-----------
+Called: `/usr/bin/pkg-config --modversion libadwaita-1` -> 0
+stdout:
+1.4.0
+-----------
+env[PKG_CONFIG_PATH]: /app/lib/pkgconfig:/app/share/pkgconfig:/usr/lib/pkgconfig:/usr/share/pkgconfig
+-----------
+Called: `/usr/bin/pkg-config --cflags libadwaita-1` -> 0
+stdout:
+-I/usr/include/libadwaita-1 -I/usr/include/gtk-4.0 -I/usr/include/pango-1.0 -I/usr/include/gdk-pixbuf-2.0 -I/usr/include/cairo -I/usr/include/graphene-1.0 -I/usr/lib/x86_64-linux-gnu/graphene-1.0/include -mfpmath=sse -msse -msse2 -I/usr/include/freetype2 -I/usr/include/harfbuzz -I/usr/include/glib-2.0 -I/usr/lib/x86_64-linux-gnu/glib-2.0/include -I/usr/include/webp -I/usr/include/blkid -I/usr/include/pixman-1 -I/usr/include/libpng16 -I/usr/include/appstream -I/usr/include/libmount -I/usr/include/fribidi -I/usr/include/sysprof-6 -pthread
+-----------
+env[PKG_CONFIG_PATH]: /app/lib/pkgconfig:/app/share/pkgconfig:/usr/lib/pkgconfig:/usr/share/pkgconfig
+env[PKG_CONFIG_ALLOW_SYSTEM_LIBS]: 1
+-----------
+Called: `/usr/bin/pkg-config --libs libadwaita-1` -> 0
+stdout:
+-L/usr/lib/x86_64-linux-gnu -ladwaita-1 -lgtk-4 -lharfbuzz -lpangocairo-1.0 -lpango-1.0 -lgdk_pixbuf-2.0 -lcairo-gobject -lcairo -lgraphene-1.0 -lgio-2.0 -lglib-2.0 -lgobject-2.0
+-----------
+env[PKG_CONFIG_PATH]: /app/lib/pkgconfig:/app/share/pkgconfig:/usr/lib/pkgconfig:/usr/share/pkgconfig
+-----------
+Called: `/usr/bin/pkg-config --libs libadwaita-1` -> 0
+stdout:
+-ladwaita-1 -lgtk-4 -lharfbuzz -lpangocairo-1.0 -lpango-1.0 -lgdk_pixbuf-2.0 -lcairo-gobject -lcairo -lgraphene-1.0 -lgio-2.0 -lglib-2.0 -lgobject-2.0
+-----------
+Run-time dependency libadwaita-1 found: YES 1.4.0
+Pkg-config binary for 1 is cached.
+Determining dependency 'gobject-introspection-1.0' with pkg-config executable '/usr/bin/pkg-config'
+env[PKG_CONFIG_PATH]: /app/lib/pkgconfig:/app/share/pkgconfig:/usr/lib/pkgconfig:/usr/share/pkgconfig
+-----------
+Called: `/usr/bin/pkg-config --modversion gobject-introspection-1.0` -> 0
+stdout:
+1.78.1
+-----------
+env[PKG_CONFIG_PATH]: /app/lib/pkgconfig:/app/share/pkgconfig:/usr/lib/pkgconfig:/usr/share/pkgconfig
+-----------
+Called: `/usr/bin/pkg-config --cflags gobject-introspection-1.0` -> 0
+stdout:
+-I/usr/include/gobject-introspection-1.0 -I/usr/include/glib-2.0 -I/usr/lib/x86_64-linux-gnu/glib-2.0/include -I/usr/include/sysprof-6 -pthread
+-----------
+env[PKG_CONFIG_PATH]: /app/lib/pkgconfig:/app/share/pkgconfig:/usr/lib/pkgconfig:/usr/share/pkgconfig
+env[PKG_CONFIG_ALLOW_SYSTEM_LIBS]: 1
+-----------
+Called: `/usr/bin/pkg-config --libs gobject-introspection-1.0` -> 0
+stdout:
+-L/usr/lib/x86_64-linux-gnu -lgirepository-1.0 -lgobject-2.0 -lglib-2.0
+-----------
+env[PKG_CONFIG_PATH]: /app/lib/pkgconfig:/app/share/pkgconfig:/usr/lib/pkgconfig:/usr/share/pkgconfig
+-----------
+Called: `/usr/bin/pkg-config --libs gobject-introspection-1.0` -> 0
+stdout:
+-lgirepository-1.0 -lgobject-2.0 -lglib-2.0
+-----------
+Run-time dependency gobject-introspection-1.0 found: YES 1.78.1
+Pkg-config binary for 1 is cached.
+Determining dependency 'gstreamer-1.0' with pkg-config executable '/usr/bin/pkg-config'
+env[PKG_CONFIG_PATH]: /app/lib/pkgconfig:/app/share/pkgconfig:/usr/lib/pkgconfig:/usr/share/pkgconfig
+-----------
+Called: `/usr/bin/pkg-config --modversion gstreamer-1.0` -> 0
+stdout:
+1.22.5
+-----------
+env[PKG_CONFIG_PATH]: /app/lib/pkgconfig:/app/share/pkgconfig:/usr/lib/pkgconfig:/usr/share/pkgconfig
+-----------
+Called: `/usr/bin/pkg-config --cflags gstreamer-1.0` -> 0
+stdout:
+-I/usr/include/gstreamer-1.0 -I/usr/include/glib-2.0 -I/usr/lib/x86_64-linux-gnu/glib-2.0/include -I/usr/include/sysprof-6 -pthread
+-----------
+env[PKG_CONFIG_PATH]: /app/lib/pkgconfig:/app/share/pkgconfig:/usr/lib/pkgconfig:/usr/share/pkgconfig
+env[PKG_CONFIG_ALLOW_SYSTEM_LIBS]: 1
+-----------
+Called: `/usr/bin/pkg-config --libs gstreamer-1.0` -> 0
+stdout:
+-L/usr/lib/x86_64-linux-gnu -lgstreamer-1.0 -lgobject-2.0 -lglib-2.0
+-----------
+env[PKG_CONFIG_PATH]: /app/lib/pkgconfig:/app/share/pkgconfig:/usr/lib/pkgconfig:/usr/share/pkgconfig
+-----------
+Called: `/usr/bin/pkg-config --libs gstreamer-1.0` -> 0
+stdout:
+-lgstreamer-1.0 -lgobject-2.0 -lglib-2.0
+-----------
+Run-time dependency gstreamer-1.0 found: YES 1.22.5
+Pkg-config binary for 1 is cached.
+Determining dependency 'gstreamer-pbutils-1.0' with pkg-config executable '/usr/bin/pkg-config'
+env[PKG_CONFIG_PATH]: /app/lib/pkgconfig:/app/share/pkgconfig:/usr/lib/pkgconfig:/usr/share/pkgconfig
+-----------
+Called: `/usr/bin/pkg-config --modversion gstreamer-pbutils-1.0` -> 0
+stdout:
+1.22.5
+-----------
+env[PKG_CONFIG_PATH]: /app/lib/pkgconfig:/app/share/pkgconfig:/usr/lib/pkgconfig:/usr/share/pkgconfig
+-----------
+Called: `/usr/bin/pkg-config --cflags gstreamer-pbutils-1.0` -> 0
+stdout:
+-I/usr/include/gstreamer-1.0 -I/usr/include/glib-2.0 -I/usr/lib/x86_64-linux-gnu/glib-2.0/include -I/usr/include/sysprof-6 -pthread -I/usr/include/orc-0.4
+-----------
+env[PKG_CONFIG_PATH]: /app/lib/pkgconfig:/app/share/pkgconfig:/usr/lib/pkgconfig:/usr/share/pkgconfig
+env[PKG_CONFIG_ALLOW_SYSTEM_LIBS]: 1
+-----------
+Called: `/usr/bin/pkg-config --libs gstreamer-pbutils-1.0` -> 0
+stdout:
+-L/usr/lib/x86_64-linux-gnu -lgstpbutils-1.0 -lgstvideo-1.0 -lgobject-2.0 -lglib-2.0 -lgstaudio-1.0 -lgstreamer-1.0 -lgstbase-1.0
+-----------
+env[PKG_CONFIG_PATH]: /app/lib/pkgconfig:/app/share/pkgconfig:/usr/lib/pkgconfig:/usr/share/pkgconfig
+-----------
+Called: `/usr/bin/pkg-config --libs gstreamer-pbutils-1.0` -> 0
+stdout:
+-lgstpbutils-1.0 -lgstvideo-1.0 -lgobject-2.0 -lglib-2.0 -lgstaudio-1.0 -lgstreamer-1.0 -lgstbase-1.0
+-----------
+Run-time dependency gstreamer-pbutils-1.0 found: YES 1.22.5
+Program tsc found: YES (/usr/lib/sdk/typescript/bin/tsc)
+Configuring org.gnome.SoundRecorder.desktop.in using configuration
+Program msgfmt found: YES (/usr/bin/msgfmt)
+Program desktop-file-validate found: YES (/usr/bin/desktop-file-validate)
+Adding test "validate-desktop"
+Configuring org.gnome.SoundRecorderDevel.gschema.xml using configuration
+Pkg-config binary for 0 is not cached.
+Pkg-config binary missing from cross or native file, or env var undefined.
+Trying a default Pkg-config fallback at pkg-config
+Found pkg-config: /usr/bin/pkg-config (2.0.2)
+Determining dependency 'glib-2.0' with pkg-config executable '/usr/bin/pkg-config'
+env[PKG_CONFIG_PATH]: /app/lib/pkgconfig:/app/share/pkgconfig:/usr/lib/pkgconfig:/usr/share/pkgconfig
+-----------
+Called: `/usr/bin/pkg-config --modversion glib-2.0` -> 0
+stdout:
+2.78.1
+-----------
+env[PKG_CONFIG_PATH]: /app/lib/pkgconfig:/app/share/pkgconfig:/usr/lib/pkgconfig:/usr/share/pkgconfig
+-----------
+Called: `/usr/bin/pkg-config --cflags glib-2.0` -> 0
+stdout:
+-I/usr/include/glib-2.0 -I/usr/lib/x86_64-linux-gnu/glib-2.0/include -I/usr/include/sysprof-6 -pthread
+-----------
+env[PKG_CONFIG_PATH]: /app/lib/pkgconfig:/app/share/pkgconfig:/usr/lib/pkgconfig:/usr/share/pkgconfig
+env[PKG_CONFIG_ALLOW_SYSTEM_LIBS]: 1
+-----------
+Called: `/usr/bin/pkg-config --libs glib-2.0` -> 0
+stdout:
+-L/usr/lib/x86_64-linux-gnu -lglib-2.0
+-----------
+env[PKG_CONFIG_PATH]: /app/lib/pkgconfig:/app/share/pkgconfig:/usr/lib/pkgconfig:/usr/share/pkgconfig
+-----------
+Called: `/usr/bin/pkg-config --libs glib-2.0` -> 0
+stdout:
+-lglib-2.0
+-----------
+Dependency gio-2.0 found: YES 2.78.1 (cached)
+env[PKG_CONFIG_PATH]: /app/lib/pkgconfig:/app/share/pkgconfig:/usr/lib/pkgconfig:/usr/share/pkgconfig
+-----------
+Called: `/usr/bin/pkg-config --variable=glib_compile_resources gio-2.0` -> 0
+stdout:
+/usr/bin/glib-compile-resources
+-----------
+Got pkgconfig variable glib_compile_resources : /usr/bin/glib-compile-resources
+Program /usr/bin/glib-compile-resources found: YES (/usr/bin/glib-compile-resources)
+Configuring org.gnome.SoundRecorder.metainfo.xml.in using configuration
+Program appstream-util found: YES (/usr/bin/appstream-util)
+Adding test "validate-metainfo"
+Configuring org.gnome.SoundRecorderDevel using configuration
+Configuring org.gnome.SoundRecorder.src.gresource.xml using configuration
+Dependency gio-2.0 found: YES 2.78.1 (cached)
+env[PKG_CONFIG_PATH]: /app/lib/pkgconfig:/app/share/pkgconfig:/usr/lib/pkgconfig:/usr/share/pkgconfig
+Got pkgconfig variable glib_compile_resources : /usr/bin/glib-compile-resources
+Program /usr/bin/glib-compile-resources found: YES (/usr/bin/glib-compile-resources)
+Program msginit found: YES (/usr/bin/msginit)
+Program msgmerge found: YES (/usr/bin/msgmerge)
+Program xgettext found: YES (/usr/bin/xgettext)
+Dependency gio-2.0 found: YES 2.78.1 (cached)
+env[PKG_CONFIG_PATH]: /app/lib/pkgconfig:/app/share/pkgconfig:/usr/lib/pkgconfig:/usr/share/pkgconfig
+-----------
+Called: `/usr/bin/pkg-config --variable=glib_compile_schemas gio-2.0` -> 0
+stdout:
+/usr/bin/glib-compile-schemas
+-----------
+Got pkgconfig variable glib_compile_schemas : /usr/bin/glib-compile-schemas
+Program /usr/bin/glib-compile-schemas found: YES (/usr/bin/glib-compile-schemas)
+Program gtk4-update-icon-cache found: YES (/usr/bin/gtk4-update-icon-cache)
+Program update-desktop-database found: YES (/usr/bin/update-desktop-database)
+Build targets in project: 71
+
+gnome-sound-recorder 43.beta
+
+  User defined options
+    prefix : /app
+    profile: development
+
+Found ninja-1.11.1 at /usr/bin/ninja
+Failed to guess install tag for /app/share/applications/org.gnome.SoundRecorderDevel.desktop
+Failed to guess install tag for /app/share/metainfo/org.gnome.SoundRecorderDevel.metainfo.xml
+Failed to guess install tag for /app/share/icons/hicolor/scalable/apps/org.gnome.SoundRecorderDevel.svg
+Failed to guess install tag for /app/share/icons/hicolor/symbolic/apps/org.gnome.SoundRecorderDevel-symbolic.svg
+Failed to guess install tag for /app/share/glib-2.0/schemas/org.gnome.SoundRecorderDevel.gschema.xml
+Failed to guess install tag for /app/share/org.gnome.SoundRecorderDevel/org.gnome.SoundRecorderDevel
+Failed to guess install tag for install script: /usr/bin/glib-compile-schemas /app/share/glib-2.0/schemas
+Failed to guess install tag for install script: /usr/bin/gtk4-update-icon-cache -q -t -f /app/share/icons/hicolor
+Failed to guess install tag for install script: /usr/bin/update-desktop-database -q /app/share/applications
+Failed to guess install tag for /app/share/applications/org.gnome.SoundRecorderDevel.desktop
+Failed to guess install tag for /app/share/metainfo/org.gnome.SoundRecorderDevel.metainfo.xml
+Failed to guess install tag for /app/share/icons/hicolor/scalable/apps/org.gnome.SoundRecorderDevel.svg
+Failed to guess install tag for /app/share/icons/hicolor/symbolic/apps/org.gnome.SoundRecorderDevel-symbolic.svg
+Failed to guess install tag for /app/share/glib-2.0/schemas/org.gnome.SoundRecorderDevel.gschema.xml
+Failed to guess install tag for /app/share/org.gnome.SoundRecorderDevel/org.gnome.SoundRecorderDevel
+Failed to guess install tag for install script: /usr/bin/glib-compile-schemas /app/share/glib-2.0/schemas
+Failed to guess install tag for install script: /usr/bin/gtk4-update-icon-cache -q -t -f /app/share/icons/hicolor
+Failed to guess install tag for install script: /usr/bin/update-desktop-database -q /app/share/applications

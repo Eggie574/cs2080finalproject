@@ -75,12 +75,6 @@ const AudioChannels = [
     { name: 'mono', channels: 1 },
 ];
 
-//My speech to text toggle ~ need to finish 
-const SpeechText = [
-    {name: 'On'},
-    {name: 'Off'}
-]
-
 export class Recorder extends GObject.Object {
     private peaks: number[];
 
@@ -278,13 +272,6 @@ export class Recorder extends GObject.Object {
         const channelIndex = Settings.get_enum('audio-channel');
         return AudioChannels[channelIndex].channels;
     }
-
-    //create class here for Audio to Text
-
-
-
-
-    
 
     private getProfile(): GstPbutils.EncodingContainerProfile | undefined {
         const profileIndex = Settings.get_enum('audio-profile');

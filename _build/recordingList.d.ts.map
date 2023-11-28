@@ -1,0 +1,1 @@
+{"version":3,"file":"recordingList.d.ts","sourceRoot":"","sources":["../src/recordingList.ts"],"names":[],"mappings":";AACA,OAAO,GAAG,MAAM,UAAU,CAAC;AAO3B,qBAAa,aAAc,SAAQ,GAAG,CAAC,SAAS;IAC5C,OAAO,CAAC,UAAU,CAAC,CAAqB;IAEjC,WAAW,EAAE,GAAG,CAAC,WAAW,CAAC;IAC7B,UAAU,EAAE,GAAG,CAAC,WAAW,CAAC;;YAyCrB,kBAAkB;YA+BlB,SAAS;IAUvB,OAAO,CAAC,QAAQ;IAQhB,OAAO,CAAC,YAAY;CAcvB"}

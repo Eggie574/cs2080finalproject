@@ -10,12 +10,6 @@
     <value nick='mono' value='1'/>
   </enum>
 
-   <enum id="@app-id@.SpeechText">
-    <value nick='On'  value='1'/>
-    <value nick='Off' value='0'/>
-  </enum>
-
-
   <schema id="@app-id@" path="/org/gnome/SoundRecorder/" gettext-domain="@gettext-package@">
     <key name="window-size" type="ai">
       <default>[780, 480]</default>
@@ -36,12 +30,6 @@
       <default>'stereo'</default>
       <summary>Available channels</summary>
       <description>Maps available channels. If there is not no mapping set, stereo channel will be used by default.</description>
-    </key>
-
-    <key name="audio-to-text" enum="@app-id@.SpeechText">
-      <default>'Off'</default>
-      <summary>Speech to Text toggle</summary>
-      <description>Maps the toggle switch on or off, defualt will be off</description>
     </key>
 
   </schema>

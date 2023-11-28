@@ -8,8 +8,8 @@ import { Recording } from './recording.js';
 import { displayDateTime, formatTime } from './utils.js';
 import { WaveForm, WaveType } from './waveform.js';
 
-declare var require : any
-const speechConversion = require('./speechToJavascript.js');
+//declare var require : any
+//const speechConversion = require('./speechToJavascript.js');
 
 export enum RowState {
     Playing,
@@ -157,15 +157,16 @@ export class Row extends Gtk.ListBoxRow {
 
                         const dest = this.exportDialog?.get_file();
                         if (dest) this.recording.save(dest);
+                        /*
+                        const name = 'Debugger.mp3';
+                        const path = require('path');
+                        var __dirname = '';
+                        const test = path.join(__dirname, name);
+                        speechConversion(name, test);
+                        */
 
                     }
                     
-                    const name = 'Debugger.mp3';
-                    const path = require('path');
-                    var __dirname = '';
-                    const test = path.join(__dirname, name);
-                    speechConversion(name, test);
-
                     this.exportDialog?.destroy();
                     this.exportDialog = null;
 

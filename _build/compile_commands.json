@@ -1,0 +1,536 @@
+[
+  {
+    "directory": "/home/chadmar/Documents/GitHub Repo Linux/cs2080finalproject/_build",
+    "command": "/usr/bin/meson --internal msgfmthelper --msgfmt=/usr/bin/msgfmt data/org.gnome.SoundRecorder.desktop.in data/org.gnome.SoundRecorderDevel.desktop desktop '/home/chadmar/Documents/GitHub Repo Linux/cs2080finalproject/po'",
+    "file": "data/org.gnome.SoundRecorder.desktop.in",
+    "output": "data/org.gnome.SoundRecorderDevel.desktop"
+  },
+  {
+    "directory": "/home/chadmar/Documents/GitHub Repo Linux/cs2080finalproject/_build",
+    "command": "/usr/bin/glib-compile-resources ../data/org.gnome.SoundRecorder.data.gresource.xml --sourcedir ../data --internal --generate --target data/org.gnome.SoundRecorderDevel.data.gresource --dependency-file data/org.gnome.SoundRecorderDevel.data.gresource.d",
+    "file": "../data/org.gnome.SoundRecorder.data.gresource.xml",
+    "output": "data/org.gnome.SoundRecorderDevel.data.gresource"
+  },
+  {
+    "directory": "/home/chadmar/Documents/GitHub Repo Linux/cs2080finalproject/_build",
+    "command": "/usr/bin/meson --internal msgfmthelper --msgfmt=/usr/bin/msgfmt data/org.gnome.SoundRecorder.metainfo.xml.in data/org.gnome.SoundRecorderDevel.metainfo.xml xml '/home/chadmar/Documents/GitHub Repo Linux/cs2080finalproject/po'",
+    "file": "data/org.gnome.SoundRecorder.metainfo.xml.in",
+    "output": "data/org.gnome.SoundRecorderDevel.metainfo.xml"
+  },
+  {
+    "directory": "/home/chadmar/Documents/GitHub Repo Linux/cs2080finalproject/_build",
+    "command": "/usr/lib/sdk/typescript/bin/tsc --outDir '/home/chadmar/Documents/GitHub Repo Linux/cs2080finalproject/_build/tsc-out'",
+    "file": "../src/application.ts",
+    "output": "src/tsc-output"
+  },
+  {
+    "directory": "/home/chadmar/Documents/GitHub Repo Linux/cs2080finalproject/_build",
+    "command": "/usr/bin/glib-compile-resources src/org.gnome.SoundRecorder.src.gresource.xml --sourcedir '/home/chadmar/Documents/GitHub Repo Linux/cs2080finalproject/_build/tsc-out' --sourcedir src --sourcedir ../src --internal --generate --target src/org.gnome.SoundRecorderDevel.src.gresource --dependency-file src/org.gnome.SoundRecorderDevel.src.gresource.d",
+    "file": "src/org.gnome.SoundRecorder.src.gresource.xml",
+    "output": "src/org.gnome.SoundRecorderDevel.src.gresource"
+  },
+  {
+    "directory": "/home/chadmar/Documents/GitHub Repo Linux/cs2080finalproject/_build",
+    "command": "",
+    "file": "meson-internal__run",
+    "output": "run"
+  },
+  {
+    "directory": "/home/chadmar/Documents/GitHub Repo Linux/cs2080finalproject/_build",
+    "command": "env 'MESON_SOURCE_ROOT=/home/chadmar/Documents/GitHub Repo Linux/cs2080finalproject' 'MESON_BUILD_ROOT=/home/chadmar/Documents/GitHub Repo Linux/cs2080finalproject/_build' MESON_SUBDIR=src 'MESONINTROSPECT=/usr/bin/meson introspect' src/org.gnome.SoundRecorderDevel",
+    "file": "data/org.gnome.SoundRecorderDevel.data.gresource",
+    "output": "meson-internal__run"
+  },
+  {
+    "directory": "/home/chadmar/Documents/GitHub Repo Linux/cs2080finalproject/_build",
+    "command": "",
+    "file": "meson-internal__org.gnome.SoundRecorderDevel-pot",
+    "output": "org.gnome.SoundRecorderDevel-pot"
+  },
+  {
+    "directory": "/home/chadmar/Documents/GitHub Repo Linux/cs2080finalproject/_build",
+    "command": "/usr/bin/msgfmt -o po/af/LC_MESSAGES/org.gnome.SoundRecorderDevel.mo ../po/af.po",
+    "file": "../po/af.po",
+    "output": "po/af/LC_MESSAGES/org.gnome.SoundRecorderDevel.mo"
+  },
+  {
+    "directory": "/home/chadmar/Documents/GitHub Repo Linux/cs2080finalproject/_build",
+    "command": "/usr/bin/msgfmt -o po/ar/LC_MESSAGES/org.gnome.SoundRecorderDevel.mo ../po/ar.po",
+    "file": "../po/ar.po",
+    "output": "po/ar/LC_MESSAGES/org.gnome.SoundRecorderDevel.mo"
+  },
+  {
+    "directory": "/home/chadmar/Documents/GitHub Repo Linux/cs2080finalproject/_build",
+    "command": "/usr/bin/msgfmt -o po/an/LC_MESSAGES/org.gnome.SoundRecorderDevel.mo ../po/an.po",
+    "file": "../po/an.po",
+    "output": "po/an/LC_MESSAGES/org.gnome.SoundRecorderDevel.mo"
+  },
+  {
+    "directory": "/home/chadmar/Documents/GitHub Repo Linux/cs2080finalproject/_build",
+    "command": "/usr/bin/msgfmt -o po/as/LC_MESSAGES/org.gnome.SoundRecorderDevel.mo ../po/as.po",
+    "file": "../po/as.po",
+    "output": "po/as/LC_MESSAGES/org.gnome.SoundRecorderDevel.mo"
+  },
+  {
+    "directory": "/home/chadmar/Documents/GitHub Repo Linux/cs2080finalproject/_build",
+    "command": "/usr/bin/msgfmt -o po/be/LC_MESSAGES/org.gnome.SoundRecorderDevel.mo ../po/be.po",
+    "file": "../po/be.po",
+    "output": "po/be/LC_MESSAGES/org.gnome.SoundRecorderDevel.mo"
+  },
+  {
+    "directory": "/home/chadmar/Documents/GitHub Repo Linux/cs2080finalproject/_build",
+    "command": "/usr/bin/msgfmt -o po/bs/LC_MESSAGES/org.gnome.SoundRecorderDevel.mo ../po/bs.po",
+    "file": "../po/bs.po",
+    "output": "po/bs/LC_MESSAGES/org.gnome.SoundRecorderDevel.mo"
+  },
+  {
+    "directory": "/home/chadmar/Documents/GitHub Repo Linux/cs2080finalproject/_build",
+    "command": "/usr/bin/msgfmt -o po/ca/LC_MESSAGES/org.gnome.SoundRecorderDevel.mo ../po/ca.po",
+    "file": "../po/ca.po",
+    "output": "po/ca/LC_MESSAGES/org.gnome.SoundRecorderDevel.mo"
+  },
+  {
+    "directory": "/home/chadmar/Documents/GitHub Repo Linux/cs2080finalproject/_build",
+    "command": "/usr/bin/msgfmt -o po/ca@valencia/LC_MESSAGES/org.gnome.SoundRecorderDevel.mo ../po/ca@valencia.po",
+    "file": "../po/ca@valencia.po",
+    "output": "po/ca@valencia/LC_MESSAGES/org.gnome.SoundRecorderDevel.mo"
+  },
+  {
+    "directory": "/home/chadmar/Documents/GitHub Repo Linux/cs2080finalproject/_build",
+    "command": "/usr/bin/msgfmt -o po/ckb/LC_MESSAGES/org.gnome.SoundRecorderDevel.mo ../po/ckb.po",
+    "file": "../po/ckb.po",
+    "output": "po/ckb/LC_MESSAGES/org.gnome.SoundRecorderDevel.mo"
+  },
+  {
+    "directory": "/home/chadmar/Documents/GitHub Repo Linux/cs2080finalproject/_build",
+    "command": "/usr/bin/msgfmt -o po/cs/LC_MESSAGES/org.gnome.SoundRecorderDevel.mo ../po/cs.po",
+    "file": "../po/cs.po",
+    "output": "po/cs/LC_MESSAGES/org.gnome.SoundRecorderDevel.mo"
+  },
+  {
+    "directory": "/home/chadmar/Documents/GitHub Repo Linux/cs2080finalproject/_build",
+    "command": "/usr/bin/msgfmt -o po/da/LC_MESSAGES/org.gnome.SoundRecorderDevel.mo ../po/da.po",
+    "file": "../po/da.po",
+    "output": "po/da/LC_MESSAGES/org.gnome.SoundRecorderDevel.mo"
+  },
+  {
+    "directory": "/home/chadmar/Documents/GitHub Repo Linux/cs2080finalproject/_build",
+    "command": "/usr/bin/msgfmt -o po/de/LC_MESSAGES/org.gnome.SoundRecorderDevel.mo ../po/de.po",
+    "file": "../po/de.po",
+    "output": "po/de/LC_MESSAGES/org.gnome.SoundRecorderDevel.mo"
+  },
+  {
+    "directory": "/home/chadmar/Documents/GitHub Repo Linux/cs2080finalproject/_build",
+    "command": "/usr/bin/msgfmt -o po/el/LC_MESSAGES/org.gnome.SoundRecorderDevel.mo ../po/el.po",
+    "file": "../po/el.po",
+    "output": "po/el/LC_MESSAGES/org.gnome.SoundRecorderDevel.mo"
+  },
+  {
+    "directory": "/home/chadmar/Documents/GitHub Repo Linux/cs2080finalproject/_build",
+    "command": "/usr/bin/msgfmt -o po/en_GB/LC_MESSAGES/org.gnome.SoundRecorderDevel.mo ../po/en_GB.po",
+    "file": "../po/en_GB.po",
+    "output": "po/en_GB/LC_MESSAGES/org.gnome.SoundRecorderDevel.mo"
+  },
+  {
+    "directory": "/home/chadmar/Documents/GitHub Repo Linux/cs2080finalproject/_build",
+    "command": "/usr/bin/msgfmt -o po/eo/LC_MESSAGES/org.gnome.SoundRecorderDevel.mo ../po/eo.po",
+    "file": "../po/eo.po",
+    "output": "po/eo/LC_MESSAGES/org.gnome.SoundRecorderDevel.mo"
+  },
+  {
+    "directory": "/home/chadmar/Documents/GitHub Repo Linux/cs2080finalproject/_build",
+    "command": "/usr/bin/msgfmt -o po/es/LC_MESSAGES/org.gnome.SoundRecorderDevel.mo ../po/es.po",
+    "file": "../po/es.po",
+    "output": "po/es/LC_MESSAGES/org.gnome.SoundRecorderDevel.mo"
+  },
+  {
+    "directory": "/home/chadmar/Documents/GitHub Repo Linux/cs2080finalproject/_build",
+    "command": "/usr/bin/msgfmt -o po/eu/LC_MESSAGES/org.gnome.SoundRecorderDevel.mo ../po/eu.po",
+    "file": "../po/eu.po",
+    "output": "po/eu/LC_MESSAGES/org.gnome.SoundRecorderDevel.mo"
+  },
+  {
+    "directory": "/home/chadmar/Documents/GitHub Repo Linux/cs2080finalproject/_build",
+    "command": "/usr/bin/msgfmt -o po/fa/LC_MESSAGES/org.gnome.SoundRecorderDevel.mo ../po/fa.po",
+    "file": "../po/fa.po",
+    "output": "po/fa/LC_MESSAGES/org.gnome.SoundRecorderDevel.mo"
+  },
+  {
+    "directory": "/home/chadmar/Documents/GitHub Repo Linux/cs2080finalproject/_build",
+    "command": "/usr/bin/msgfmt -o po/fi/LC_MESSAGES/org.gnome.SoundRecorderDevel.mo ../po/fi.po",
+    "file": "../po/fi.po",
+    "output": "po/fi/LC_MESSAGES/org.gnome.SoundRecorderDevel.mo"
+  },
+  {
+    "directory": "/home/chadmar/Documents/GitHub Repo Linux/cs2080finalproject/_build",
+    "command": "/usr/bin/msgfmt -o po/fr/LC_MESSAGES/org.gnome.SoundRecorderDevel.mo ../po/fr.po",
+    "file": "../po/fr.po",
+    "output": "po/fr/LC_MESSAGES/org.gnome.SoundRecorderDevel.mo"
+  },
+  {
+    "directory": "/home/chadmar/Documents/GitHub Repo Linux/cs2080finalproject/_build",
+    "command": "/usr/bin/msgfmt -o po/fur/LC_MESSAGES/org.gnome.SoundRecorderDevel.mo ../po/fur.po",
+    "file": "../po/fur.po",
+    "output": "po/fur/LC_MESSAGES/org.gnome.SoundRecorderDevel.mo"
+  },
+  {
+    "directory": "/home/chadmar/Documents/GitHub Repo Linux/cs2080finalproject/_build",
+    "command": "/usr/bin/msgfmt -o po/gl/LC_MESSAGES/org.gnome.SoundRecorderDevel.mo ../po/gl.po",
+    "file": "../po/gl.po",
+    "output": "po/gl/LC_MESSAGES/org.gnome.SoundRecorderDevel.mo"
+  },
+  {
+    "directory": "/home/chadmar/Documents/GitHub Repo Linux/cs2080finalproject/_build",
+    "command": "/usr/bin/msgfmt -o po/he/LC_MESSAGES/org.gnome.SoundRecorderDevel.mo ../po/he.po",
+    "file": "../po/he.po",
+    "output": "po/he/LC_MESSAGES/org.gnome.SoundRecorderDevel.mo"
+  },
+  {
+    "directory": "/home/chadmar/Documents/GitHub Repo Linux/cs2080finalproject/_build",
+    "command": "/usr/bin/msgfmt -o po/hi/LC_MESSAGES/org.gnome.SoundRecorderDevel.mo ../po/hi.po",
+    "file": "../po/hi.po",
+    "output": "po/hi/LC_MESSAGES/org.gnome.SoundRecorderDevel.mo"
+  },
+  {
+    "directory": "/home/chadmar/Documents/GitHub Repo Linux/cs2080finalproject/_build",
+    "command": "/usr/bin/msgfmt -o po/hr/LC_MESSAGES/org.gnome.SoundRecorderDevel.mo ../po/hr.po",
+    "file": "../po/hr.po",
+    "output": "po/hr/LC_MESSAGES/org.gnome.SoundRecorderDevel.mo"
+  },
+  {
+    "directory": "/home/chadmar/Documents/GitHub Repo Linux/cs2080finalproject/_build",
+    "command": "/usr/bin/msgfmt -o po/hu/LC_MESSAGES/org.gnome.SoundRecorderDevel.mo ../po/hu.po",
+    "file": "../po/hu.po",
+    "output": "po/hu/LC_MESSAGES/org.gnome.SoundRecorderDevel.mo"
+  },
+  {
+    "directory": "/home/chadmar/Documents/GitHub Repo Linux/cs2080finalproject/_build",
+    "command": "/usr/bin/msgfmt -o po/id/LC_MESSAGES/org.gnome.SoundRecorderDevel.mo ../po/id.po",
+    "file": "../po/id.po",
+    "output": "po/id/LC_MESSAGES/org.gnome.SoundRecorderDevel.mo"
+  },
+  {
+    "directory": "/home/chadmar/Documents/GitHub Repo Linux/cs2080finalproject/_build",
+    "command": "/usr/bin/msgfmt -o po/ie/LC_MESSAGES/org.gnome.SoundRecorderDevel.mo ../po/ie.po",
+    "file": "../po/ie.po",
+    "output": "po/ie/LC_MESSAGES/org.gnome.SoundRecorderDevel.mo"
+  },
+  {
+    "directory": "/home/chadmar/Documents/GitHub Repo Linux/cs2080finalproject/_build",
+    "command": "/usr/bin/msgfmt -o po/is/LC_MESSAGES/org.gnome.SoundRecorderDevel.mo ../po/is.po",
+    "file": "../po/is.po",
+    "output": "po/is/LC_MESSAGES/org.gnome.SoundRecorderDevel.mo"
+  },
+  {
+    "directory": "/home/chadmar/Documents/GitHub Repo Linux/cs2080finalproject/_build",
+    "command": "/usr/bin/msgfmt -o po/it/LC_MESSAGES/org.gnome.SoundRecorderDevel.mo ../po/it.po",
+    "file": "../po/it.po",
+    "output": "po/it/LC_MESSAGES/org.gnome.SoundRecorderDevel.mo"
+  },
+  {
+    "directory": "/home/chadmar/Documents/GitHub Repo Linux/cs2080finalproject/_build",
+    "command": "/usr/bin/msgfmt -o po/ja/LC_MESSAGES/org.gnome.SoundRecorderDevel.mo ../po/ja.po",
+    "file": "../po/ja.po",
+    "output": "po/ja/LC_MESSAGES/org.gnome.SoundRecorderDevel.mo"
+  },
+  {
+    "directory": "/home/chadmar/Documents/GitHub Repo Linux/cs2080finalproject/_build",
+    "command": "/usr/bin/msgfmt -o po/ka/LC_MESSAGES/org.gnome.SoundRecorderDevel.mo ../po/ka.po",
+    "file": "../po/ka.po",
+    "output": "po/ka/LC_MESSAGES/org.gnome.SoundRecorderDevel.mo"
+  },
+  {
+    "directory": "/home/chadmar/Documents/GitHub Repo Linux/cs2080finalproject/_build",
+    "command": "/usr/bin/msgfmt -o po/kk/LC_MESSAGES/org.gnome.SoundRecorderDevel.mo ../po/kk.po",
+    "file": "../po/kk.po",
+    "output": "po/kk/LC_MESSAGES/org.gnome.SoundRecorderDevel.mo"
+  },
+  {
+    "directory": "/home/chadmar/Documents/GitHub Repo Linux/cs2080finalproject/_build",
+    "command": "/usr/bin/msgfmt -o po/ko/LC_MESSAGES/org.gnome.SoundRecorderDevel.mo ../po/ko.po",
+    "file": "../po/ko.po",
+    "output": "po/ko/LC_MESSAGES/org.gnome.SoundRecorderDevel.mo"
+  },
+  {
+    "directory": "/home/chadmar/Documents/GitHub Repo Linux/cs2080finalproject/_build",
+    "command": "/usr/bin/msgfmt -o po/lt/LC_MESSAGES/org.gnome.SoundRecorderDevel.mo ../po/lt.po",
+    "file": "../po/lt.po",
+    "output": "po/lt/LC_MESSAGES/org.gnome.SoundRecorderDevel.mo"
+  },
+  {
+    "directory": "/home/chadmar/Documents/GitHub Repo Linux/cs2080finalproject/_build",
+    "command": "/usr/bin/msgfmt -o po/lv/LC_MESSAGES/org.gnome.SoundRecorderDevel.mo ../po/lv.po",
+    "file": "../po/lv.po",
+    "output": "po/lv/LC_MESSAGES/org.gnome.SoundRecorderDevel.mo"
+  },
+  {
+    "directory": "/home/chadmar/Documents/GitHub Repo Linux/cs2080finalproject/_build",
+    "command": "/usr/bin/msgfmt -o po/mjw/LC_MESSAGES/org.gnome.SoundRecorderDevel.mo ../po/mjw.po",
+    "file": "../po/mjw.po",
+    "output": "po/mjw/LC_MESSAGES/org.gnome.SoundRecorderDevel.mo"
+  },
+  {
+    "directory": "/home/chadmar/Documents/GitHub Repo Linux/cs2080finalproject/_build",
+    "command": "/usr/bin/msgfmt -o po/ml/LC_MESSAGES/org.gnome.SoundRecorderDevel.mo ../po/ml.po",
+    "file": "../po/ml.po",
+    "output": "po/ml/LC_MESSAGES/org.gnome.SoundRecorderDevel.mo"
+  },
+  {
+    "directory": "/home/chadmar/Documents/GitHub Repo Linux/cs2080finalproject/_build",
+    "command": "/usr/bin/msgfmt -o po/ms/LC_MESSAGES/org.gnome.SoundRecorderDevel.mo ../po/ms.po",
+    "file": "../po/ms.po",
+    "output": "po/ms/LC_MESSAGES/org.gnome.SoundRecorderDevel.mo"
+  },
+  {
+    "directory": "/home/chadmar/Documents/GitHub Repo Linux/cs2080finalproject/_build",
+    "command": "/usr/bin/msgfmt -o po/nb/LC_MESSAGES/org.gnome.SoundRecorderDevel.mo ../po/nb.po",
+    "file": "../po/nb.po",
+    "output": "po/nb/LC_MESSAGES/org.gnome.SoundRecorderDevel.mo"
+  },
+  {
+    "directory": "/home/chadmar/Documents/GitHub Repo Linux/cs2080finalproject/_build",
+    "command": "/usr/bin/msgfmt -o po/ne/LC_MESSAGES/org.gnome.SoundRecorderDevel.mo ../po/ne.po",
+    "file": "../po/ne.po",
+    "output": "po/ne/LC_MESSAGES/org.gnome.SoundRecorderDevel.mo"
+  },
+  {
+    "directory": "/home/chadmar/Documents/GitHub Repo Linux/cs2080finalproject/_build",
+    "command": "/usr/bin/msgfmt -o po/nl/LC_MESSAGES/org.gnome.SoundRecorderDevel.mo ../po/nl.po",
+    "file": "../po/nl.po",
+    "output": "po/nl/LC_MESSAGES/org.gnome.SoundRecorderDevel.mo"
+  },
+  {
+    "directory": "/home/chadmar/Documents/GitHub Repo Linux/cs2080finalproject/_build",
+    "command": "/usr/bin/msgfmt -o po/oc/LC_MESSAGES/org.gnome.SoundRecorderDevel.mo ../po/oc.po",
+    "file": "../po/oc.po",
+    "output": "po/oc/LC_MESSAGES/org.gnome.SoundRecorderDevel.mo"
+  },
+  {
+    "directory": "/home/chadmar/Documents/GitHub Repo Linux/cs2080finalproject/_build",
+    "command": "/usr/bin/msgfmt -o po/pa/LC_MESSAGES/org.gnome.SoundRecorderDevel.mo ../po/pa.po",
+    "file": "../po/pa.po",
+    "output": "po/pa/LC_MESSAGES/org.gnome.SoundRecorderDevel.mo"
+  },
+  {
+    "directory": "/home/chadmar/Documents/GitHub Repo Linux/cs2080finalproject/_build",
+    "command": "/usr/bin/msgfmt -o po/pl/LC_MESSAGES/org.gnome.SoundRecorderDevel.mo ../po/pl.po",
+    "file": "../po/pl.po",
+    "output": "po/pl/LC_MESSAGES/org.gnome.SoundRecorderDevel.mo"
+  },
+  {
+    "directory": "/home/chadmar/Documents/GitHub Repo Linux/cs2080finalproject/_build",
+    "command": "/usr/bin/msgfmt -o po/pt/LC_MESSAGES/org.gnome.SoundRecorderDevel.mo ../po/pt.po",
+    "file": "../po/pt.po",
+    "output": "po/pt/LC_MESSAGES/org.gnome.SoundRecorderDevel.mo"
+  },
+  {
+    "directory": "/home/chadmar/Documents/GitHub Repo Linux/cs2080finalproject/_build",
+    "command": "/usr/bin/msgfmt -o po/pt_BR/LC_MESSAGES/org.gnome.SoundRecorderDevel.mo ../po/pt_BR.po",
+    "file": "../po/pt_BR.po",
+    "output": "po/pt_BR/LC_MESSAGES/org.gnome.SoundRecorderDevel.mo"
+  },
+  {
+    "directory": "/home/chadmar/Documents/GitHub Repo Linux/cs2080finalproject/_build",
+    "command": "/usr/bin/msgfmt -o po/ro/LC_MESSAGES/org.gnome.SoundRecorderDevel.mo ../po/ro.po",
+    "file": "../po/ro.po",
+    "output": "po/ro/LC_MESSAGES/org.gnome.SoundRecorderDevel.mo"
+  },
+  {
+    "directory": "/home/chadmar/Documents/GitHub Repo Linux/cs2080finalproject/_build",
+    "command": "/usr/bin/msgfmt -o po/ru/LC_MESSAGES/org.gnome.SoundRecorderDevel.mo ../po/ru.po",
+    "file": "../po/ru.po",
+    "output": "po/ru/LC_MESSAGES/org.gnome.SoundRecorderDevel.mo"
+  },
+  {
+    "directory": "/home/chadmar/Documents/GitHub Repo Linux/cs2080finalproject/_build",
+    "command": "/usr/bin/msgfmt -o po/sk/LC_MESSAGES/org.gnome.SoundRecorderDevel.mo ../po/sk.po",
+    "file": "../po/sk.po",
+    "output": "po/sk/LC_MESSAGES/org.gnome.SoundRecorderDevel.mo"
+  },
+  {
+    "directory": "/home/chadmar/Documents/GitHub Repo Linux/cs2080finalproject/_build",
+    "command": "/usr/bin/msgfmt -o po/sl/LC_MESSAGES/org.gnome.SoundRecorderDevel.mo ../po/sl.po",
+    "file": "../po/sl.po",
+    "output": "po/sl/LC_MESSAGES/org.gnome.SoundRecorderDevel.mo"
+  },
+  {
+    "directory": "/home/chadmar/Documents/GitHub Repo Linux/cs2080finalproject/_build",
+    "command": "/usr/bin/msgfmt -o po/sr/LC_MESSAGES/org.gnome.SoundRecorderDevel.mo ../po/sr.po",
+    "file": "../po/sr.po",
+    "output": "po/sr/LC_MESSAGES/org.gnome.SoundRecorderDevel.mo"
+  },
+  {
+    "directory": "/home/chadmar/Documents/GitHub Repo Linux/cs2080finalproject/_build",
+    "command": "/usr/bin/msgfmt -o po/sr@latin/LC_MESSAGES/org.gnome.SoundRecorderDevel.mo ../po/sr@latin.po",
+    "file": "../po/sr@latin.po",
+    "output": "po/sr@latin/LC_MESSAGES/org.gnome.SoundRecorderDevel.mo"
+  },
+  {
+    "directory": "/home/chadmar/Documents/GitHub Repo Linux/cs2080finalproject/_build",
+    "command": "/usr/bin/msgfmt -o po/sv/LC_MESSAGES/org.gnome.SoundRecorderDevel.mo ../po/sv.po",
+    "file": "../po/sv.po",
+    "output": "po/sv/LC_MESSAGES/org.gnome.SoundRecorderDevel.mo"
+  },
+  {
+    "directory": "/home/chadmar/Documents/GitHub Repo Linux/cs2080finalproject/_build",
+    "command": "/usr/bin/msgfmt -o po/te/LC_MESSAGES/org.gnome.SoundRecorderDevel.mo ../po/te.po",
+    "file": "../po/te.po",
+    "output": "po/te/LC_MESSAGES/org.gnome.SoundRecorderDevel.mo"
+  },
+  {
+    "directory": "/home/chadmar/Documents/GitHub Repo Linux/cs2080finalproject/_build",
+    "command": "/usr/bin/msgfmt -o po/tg/LC_MESSAGES/org.gnome.SoundRecorderDevel.mo ../po/tg.po",
+    "file": "../po/tg.po",
+    "output": "po/tg/LC_MESSAGES/org.gnome.SoundRecorderDevel.mo"
+  },
+  {
+    "directory": "/home/chadmar/Documents/GitHub Repo Linux/cs2080finalproject/_build",
+    "command": "/usr/bin/msgfmt -o po/tr/LC_MESSAGES/org.gnome.SoundRecorderDevel.mo ../po/tr.po",
+    "file": "../po/tr.po",
+    "output": "po/tr/LC_MESSAGES/org.gnome.SoundRecorderDevel.mo"
+  },
+  {
+    "directory": "/home/chadmar/Documents/GitHub Repo Linux/cs2080finalproject/_build",
+    "command": "/usr/bin/msgfmt -o po/uk/LC_MESSAGES/org.gnome.SoundRecorderDevel.mo ../po/uk.po",
+    "file": "../po/uk.po",
+    "output": "po/uk/LC_MESSAGES/org.gnome.SoundRecorderDevel.mo"
+  },
+  {
+    "directory": "/home/chadmar/Documents/GitHub Repo Linux/cs2080finalproject/_build",
+    "command": "/usr/bin/msgfmt -o po/vi/LC_MESSAGES/org.gnome.SoundRecorderDevel.mo ../po/vi.po",
+    "file": "../po/vi.po",
+    "output": "po/vi/LC_MESSAGES/org.gnome.SoundRecorderDevel.mo"
+  },
+  {
+    "directory": "/home/chadmar/Documents/GitHub Repo Linux/cs2080finalproject/_build",
+    "command": "/usr/bin/msgfmt -o po/zh_CN/LC_MESSAGES/org.gnome.SoundRecorderDevel.mo ../po/zh_CN.po",
+    "file": "../po/zh_CN.po",
+    "output": "po/zh_CN/LC_MESSAGES/org.gnome.SoundRecorderDevel.mo"
+  },
+  {
+    "directory": "/home/chadmar/Documents/GitHub Repo Linux/cs2080finalproject/_build",
+    "command": "/usr/bin/msgfmt -o po/zh_HK/LC_MESSAGES/org.gnome.SoundRecorderDevel.mo ../po/zh_HK.po",
+    "file": "../po/zh_HK.po",
+    "output": "po/zh_HK/LC_MESSAGES/org.gnome.SoundRecorderDevel.mo"
+  },
+  {
+    "directory": "/home/chadmar/Documents/GitHub Repo Linux/cs2080finalproject/_build",
+    "command": "/usr/bin/msgfmt -o po/zh_TW/LC_MESSAGES/org.gnome.SoundRecorderDevel.mo ../po/zh_TW.po",
+    "file": "../po/zh_TW.po",
+    "output": "po/zh_TW/LC_MESSAGES/org.gnome.SoundRecorderDevel.mo"
+  },
+  {
+    "directory": "/home/chadmar/Documents/GitHub Repo Linux/cs2080finalproject/_build",
+    "command": "",
+    "file": "po/af/LC_MESSAGES/org.gnome.SoundRecorderDevel.mo",
+    "output": "org.gnome.SoundRecorderDevel-gmo"
+  },
+  {
+    "directory": "/home/chadmar/Documents/GitHub Repo Linux/cs2080finalproject/_build",
+    "command": "",
+    "file": "meson-internal__org.gnome.SoundRecorderDevel-update-po",
+    "output": "org.gnome.SoundRecorderDevel-update-po"
+  },
+  {
+    "directory": "/home/chadmar/Documents/GitHub Repo Linux/cs2080finalproject/_build",
+    "command": "",
+    "file": "meson-internal__test",
+    "output": "test"
+  },
+  {
+    "directory": "/home/chadmar/Documents/GitHub Repo Linux/cs2080finalproject/_build",
+    "command": "/usr/bin/meson test --no-rebuild --print-errorlogs",
+    "file": "all",
+    "output": "meson-internal__test"
+  },
+  {
+    "directory": "/home/chadmar/Documents/GitHub Repo Linux/cs2080finalproject/_build",
+    "command": "",
+    "file": "meson-internal__benchmark",
+    "output": "benchmark"
+  },
+  {
+    "directory": "/home/chadmar/Documents/GitHub Repo Linux/cs2080finalproject/_build",
+    "command": "/usr/bin/meson test --benchmark --logbase benchmarklog --num-processes=1 --no-rebuild",
+    "file": "all",
+    "output": "meson-internal__benchmark"
+  },
+  {
+    "directory": "/home/chadmar/Documents/GitHub Repo Linux/cs2080finalproject/_build",
+    "command": "",
+    "file": "meson-internal__install",
+    "output": "install"
+  },
+  {
+    "directory": "/home/chadmar/Documents/GitHub Repo Linux/cs2080finalproject/_build",
+    "command": "/usr/bin/meson install --no-rebuild",
+    "file": "PHONY",
+    "output": "meson-internal__install"
+  },
+  {
+    "directory": "/home/chadmar/Documents/GitHub Repo Linux/cs2080finalproject/_build",
+    "command": "",
+    "file": "meson-internal__dist",
+    "output": "dist"
+  },
+  {
+    "directory": "/home/chadmar/Documents/GitHub Repo Linux/cs2080finalproject/_build",
+    "command": "/usr/bin/meson dist",
+    "file": "PHONY",
+    "output": "meson-internal__dist"
+  },
+  {
+    "directory": "/home/chadmar/Documents/GitHub Repo Linux/cs2080finalproject/_build",
+    "command": "",
+    "file": "meson-internal__uninstall",
+    "output": "uninstall"
+  },
+  {
+    "directory": "/home/chadmar/Documents/GitHub Repo Linux/cs2080finalproject/_build",
+    "command": "/usr/bin/meson --internal uninstall",
+    "file": "PHONY",
+    "output": "meson-internal__uninstall"
+  },
+  {
+    "directory": "/home/chadmar/Documents/GitHub Repo Linux/cs2080finalproject/_build",
+    "command": "",
+    "file": "meson-test-prereq",
+    "output": "all"
+  },
+  {
+    "directory": "/home/chadmar/Documents/GitHub Repo Linux/cs2080finalproject/_build",
+    "command": "",
+    "file": "meson-internal__clean",
+    "output": "clean"
+  },
+  {
+    "directory": "/home/chadmar/Documents/GitHub Repo Linux/cs2080finalproject/_build",
+    "command": "",
+    "file": "meson-internal__clean-ctlist",
+    "output": "clean-ctlist"
+  },
+  {
+    "directory": "/home/chadmar/Documents/GitHub Repo Linux/cs2080finalproject/_build",
+    "command": "/usr/bin/meson --internal cleantrees '/home/chadmar/Documents/GitHub Repo Linux/cs2080finalproject/_build/meson-private/cleantrees.dat'",
+    "file": "PHONY",
+    "output": "meson-internal__clean-ctlist"
+  },
+  {
+    "directory": "/home/chadmar/Documents/GitHub Repo Linux/cs2080finalproject/_build",
+    "command": "/usr/bin/ninja -t clean",
+    "file": "PHONY",
+    "output": "meson-internal__clean"
+  },
+  {
+    "directory": "/home/chadmar/Documents/GitHub Repo Linux/cs2080finalproject/_build",
+    "command": "/usr/bin/meson --internal regenerate '/home/chadmar/Documents/GitHub Repo Linux/cs2080finalproject' .",
+    "file": "../meson.build",
+    "output": "build.ninja"
+  },
+  {
+    "directory": "/home/chadmar/Documents/GitHub Repo Linux/cs2080finalproject/_build",
+    "command": "/usr/bin/meson --internal regenerate '/home/chadmar/Documents/GitHub Repo Linux/cs2080finalproject' .",
+    "file": "PHONY",
+    "output": "reconfigure"
+  }
+]

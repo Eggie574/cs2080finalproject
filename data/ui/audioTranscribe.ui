@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <object class="GtkWindow" id="audio_Transcribe">
+  <child>
+     <object class="GtkShortcutsSection">
+         <property name="title" translatable="yes">Audio Transcription</property>
+        <property name="max-height">10</property>
+        <property name="default_width">600</property>
+        <property name="default_height">425</property>
+      
+      <! Will add the next part once I verifify this opens>
+  
+    </child>
+    </object>
+   </object> 
+</interface>

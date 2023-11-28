@@ -97,9 +97,11 @@ export class Application extends Adw.Application {
         const channelAction = Settings.create_action('audio-channel');
         this.add_action(channelAction);
 
-        //My speech to text button added
-        const speechText = Settings.create_action('audio-to-text');
+        //My speech to text button added ~ need to work on this some more
+        const speechText = new Gio.SimpleAction({name: 'audio-to-text'});
+        speechText.connect('activate', this.speechToTxt.bind(this));
         this.add_action(speechText);
+
 
         const aboutAction = new Gio.SimpleAction({ name: 'about' });
         aboutAction.connect('activate', this.showAbout.bind(this));
@@ -193,4 +195,17 @@ export class Application extends Adw.Application {
         });
         aboutDialog.show();
     }
+
+    private speechToTxt() : void {
+
+        const window = new Gtk.Window ({
+            title: "Audio Transcription",
+            default_height: 425,
+            default_width: 600
+        });
+
+        window.show();
+
+    }
+
 }
