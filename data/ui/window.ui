@@ -111,9 +111,6 @@
     </child>
   </template>
   <menu id="primaryMenu">
-    <item>
-      <attribute translatable="yes" name="label">Default File Path</attribute>
-    </item>
     <submenu>
       <attribute translatable="yes" name="label">Preferred Format</attribute>
       <item>

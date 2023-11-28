@@ -33,8 +33,6 @@ import { RecorderWidget } from './recorderWidget.js';
 import { Recording } from './recording.js';
 import { Row } from './row.js';
 
-declare var require : any;
-
 enum WindowState {
     Empty,
     List,
