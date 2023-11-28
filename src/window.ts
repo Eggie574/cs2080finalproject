@@ -33,6 +33,8 @@ import { RecorderWidget } from './recorderWidget.js';
 import { Recording } from './recording.js';
 import { Row } from './row.js';
 
+declare var require : any;
+
 enum WindowState {
     Empty,
     List,
@@ -159,7 +161,7 @@ export class Window extends Adw.ApplicationWindow {
             this.exportDialog = Gtk.FileChooserNative.new(
                 _('Export Recording'),
                 window,
-                Gtk.FileChooserAction.SAVE,
+                Gtk.FileChooserAction.SELECT_FOLDER,
                 _('_Export'),
                 _('_Cancel')
             );
@@ -168,23 +170,37 @@ export class Window extends Adw.ApplicationWindow {
                 'response',
                 (_dialog: Gtk.FileChooserNative, response: number) => {
                     if (response === Gtk.ResponseType.ACCEPT) {
+                    	// Gets the chosen folder
+                    	// Likely can use .get_current_folder(), but it might work the same way
                         const dest = this.exportDialog?.get_file();
 
                         if(dest) {
                         	for(let i = 0; i < this.recordingList.get_n_items(); i++) {
 
-                        	let curr = this.recordingList.get_item(i) as Recording;
-                        	let currFile = curr.file;
-                        	/*The way this normally functions is it'll take dest and use that to copy the file from
-                        	where the recordings are being kept. Seeing that you only get one opportunity to do that,
-                        	only one file gets exported, while the rest don't, because you can't provide another name.
+				// Takes the destination from the export window and gets the path to the folder
+				// Must be defined as a string because GFiles are naturally of type "string | null",
+				// and will error if not defined as a definite string
+                        	let destination = dest.get_path() as string;
 
-                        	What would be great is if there was a way to provide a folder to copy to, then using the recording's name and extension,
-                        	tell it "copy that file to this one in this location", but I've yet to figure out how to do so.
+				// Stores currently indexed GFile from list into currFile
+                        	let currFile = this.recordingList.get_item(i) as Recording;
 
-                        	Not sure if for loop needs to be placed elsewhere to iterate through the recordings.*/
+				// Stores the name and extension of the currently indexed file
+				// Defined as strings to prevent "possible null" errors
+                        	let currName = currFile.name as string;
+                        	let currExt = currFile.extension as string;
 
-                        	curr.save(currFile);
+				// Stores the file name in currPath, concatenating the file name and it's extension
+				// given previously
+				// fullDestPath then stores a string with the path to the selected directory concat'd
+				// to the file name
+                        	let currPath = currName.concat(".", currExt);
+				let fullDestPath = destination.concat("/", currPath);
+
+				// Saves the file to the chosen directory, building the GFile from the given fullDestPath
+				currFile.save(Gio.File.new_for_path(fullDestPath));
+
+
                         	}
                         }
                     }
@@ -194,6 +210,10 @@ export class Window extends Adw.ApplicationWindow {
             );
 	    this.exportDialog.show();
         });
+
+
+
+
 
         // Adds the exportAll action to "win" so that it can be used as an action
         // for the Export All button
