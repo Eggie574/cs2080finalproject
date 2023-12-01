@@ -1,19 +1,16 @@
-"use strict";
 var _a;
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.RecordingsListWidget = void 0;
 /* exported RecordingsListWidget */
-const _1 = require("gi://Adw");
-const _2 = require("gi://GObject");
-const _3 = require("gi://Gst");
-const _4 = require("gi://GstPlayer");
-const _5 = require("gi://Gtk?version=4.0");
-const row_js_1 = require("./row.js");
-class RecordingsListWidget extends _1.default.Bin {
+import Adw from 'gi://Adw';
+import GObject from 'gi://GObject';
+import Gst from 'gi://Gst';
+import GstPlayer from 'gi://GstPlayer';
+import Gtk from 'gi://Gtk?version=4.0';
+import { Row, RowState } from './row.js';
+export class RecordingsListWidget extends Adw.Bin {
     constructor(model, player) {
         super();
-        this.list = _5.default.ListBox.new();
-        this.list.valign = _5.default.Align.START;
+        this.list = Gtk.ListBox.new();
+        this.list.valign = Gtk.Align.START;
         this.list.margin_start = 8;
         this.list.margin_end = 8;
         this.list.margin_top = 12;
@@ -23,14 +20,14 @@ class RecordingsListWidget extends _1.default.Bin {
         this.set_child(this.list);
         this.player = player;
         this.player.connect('state-changed', (_player, state) => {
-            if (state === _4.default.PlayerState.STOPPED &&
+            if (state === GstPlayer.PlayerState.STOPPED &&
                 this.activePlayingRow) {
-                this.activePlayingRow.state = row_js_1.RowState.Paused;
+                this.activePlayingRow.state = RowState.Paused;
                 this.activePlayingRow.waveform.position = 0.0;
             }
-            else if (state === _4.default.PlayerState.PLAYING) {
+            else if (state === GstPlayer.PlayerState.PLAYING) {
                 if (this.activePlayingRow)
-                    this.activePlayingRow.state = row_js_1.RowState.Playing;
+                    this.activePlayingRow.state = RowState.Playing;
             }
         });
         this.player.connect('position-updated', (_player, pos) => {
@@ -41,7 +38,7 @@ class RecordingsListWidget extends _1.default.Bin {
         });
         this.list.bind_model(model, (item) => {
             const recording = item;
-            const row = new row_js_1.Row(recording);
+            const row = new Row(recording);
             row.waveform.connect('gesture-pressed', () => {
                 if (!this.activePlayingRow || this.activePlayingRow !== row) {
                     if (this.activePlayingRow)
@@ -56,7 +53,7 @@ class RecordingsListWidget extends _1.default.Bin {
             row.connect('play', (_row) => {
                 if (this.activePlayingRow) {
                     if (this.activePlayingRow !== _row) {
-                        this.activePlayingRow.state = row_js_1.RowState.Paused;
+                        this.activePlayingRow.state = RowState.Paused;
                         this.activePlayingRow.waveform.position = 0.0;
                         this.player.set_uri(recording.uri);
                     }
@@ -71,7 +68,7 @@ class RecordingsListWidget extends _1.default.Bin {
                 this.player.pause();
             });
             row.connect('seek-backward', (row) => {
-                let position = this.player.position - 10 * _3.default.SECOND;
+                let position = this.player.position - 10 * Gst.SECOND;
                 position =
                     position < 0 || position > row.recording.duration
                         ? 0
@@ -79,7 +76,7 @@ class RecordingsListWidget extends _1.default.Bin {
                 this.player.seek(position);
             });
             row.connect('seek-forward', (_row) => {
-                let position = this.player.position + 10 * _3.default.SECOND;
+                let position = this.player.position + 10 * Gst.SECOND;
                 position =
                     position < 0 || position > _row.recording.duration
                         ? 0
@@ -137,13 +134,12 @@ class RecordingsListWidget extends _1.default.Bin {
         }
     }
 }
-exports.RecordingsListWidget = RecordingsListWidget;
 _a = RecordingsListWidget;
 (() => {
-    _2.default.registerClass({
+    GObject.registerClass({
         Signals: {
             'row-deleted': {
-                param_types: [_2.default.TYPE_OBJECT, _2.default.TYPE_INT],
+                param_types: [GObject.TYPE_OBJECT, GObject.TYPE_INT],
             },
         },
     }, _a);

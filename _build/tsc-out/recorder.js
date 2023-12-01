@@ -1,4 +1,3 @@
-"use strict";
 /* exported EncodingProfiles Recorder */
 /*
  * Copyright 2013 Meg Ford
@@ -19,16 +18,14 @@
  *
  */
 var _a;
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.Recorder = exports.EncodingProfiles = void 0;
-const _1 = require("gi://GLib");
-const _2 = require("gi://GObject");
-const _3 = require("gi://Gst");
-const _4 = require("gi://GstPbutils");
-const application_js_1 = require("./application.js");
-const recording_js_1 = require("./recording.js");
+import GLib from 'gi://GLib';
+import GObject from 'gi://GObject';
+import Gst from 'gi://Gst';
+import GstPbutils from 'gi://GstPbutils';
+import { RecordingsDir, Settings } from './application.js';
+import { Recording } from './recording.js';
 // All supported encoding profiles.
-exports.EncodingProfiles = [
+export const EncodingProfiles = [
     {
         name: 'VORBIS',
         containerCaps: 'application/ogg;audio/ogg;video/ogg',
@@ -69,14 +66,14 @@ const AudioChannels = [
     { name: 'stereo', channels: 2 },
     { name: 'mono', channels: 1 },
 ];
-class Recorder extends _2.default.Object {
+export class Recorder extends GObject.Object {
     constructor() {
         super();
         this.peaks = [];
         let srcElement;
         let audioConvert;
-        const caps = _3.default.Caps.from_string('audio/x-raw');
-        this.pipeline = new _3.default.Pipeline({ name: 'pipe' });
+        const caps = Gst.Caps.from_string('audio/x-raw');
+        this.pipeline = new Gst.Pipeline({ name: 'pipe' });
         const elements = [
             ['pulsesrc', 'srcElement'],
             ['audioconvert', 'audioConvert'],
@@ -84,7 +81,7 @@ class Recorder extends _2.default.Object {
             ['encodebin', 'ebin'],
             ['filesink', 'filesink'],
         ].map(([fac, name]) => {
-            const element = _3.default.ElementFactory.make(fac, name);
+            const element = Gst.ElementFactory.make(fac, name);
             if (!element)
                 throw new Error('Not all elements could be created.');
             this.pipeline.add(element);
@@ -100,7 +97,7 @@ class Recorder extends _2.default.Object {
         do {
             /* Translators: ""Recording %d"" is the default name assigned to a file created
             by the application (for example, "Recording 1"). */
-            this.file = application_js_1.RecordingsDir.get_child_for_display_name(_('Recording %d').format(index++));
+            this.file = RecordingsDir.get_child_for_display_name(_('Recording %d').format(index++));
         } while (this.file.query_exists(null));
         this.recordBus = this.pipeline.get_bus();
         this.recordBus.add_signal_watch();
@@ -114,26 +111,26 @@ class Recorder extends _2.default.Object {
             this.level.link(this.ebin);
             this.ebin.link(this.filesink);
         }
-        this.state = _3.default.State.PLAYING;
-        this.timeout = _1.default.timeout_add(_1.default.PRIORITY_DEFAULT, 100, () => {
-            const pos = this.pipeline.query_position(_3.default.Format.TIME)[1];
+        this.state = Gst.State.PLAYING;
+        this.timeout = GLib.timeout_add(GLib.PRIORITY_DEFAULT, 100, () => {
+            const pos = this.pipeline.query_position(Gst.Format.TIME)[1];
             if (pos > 0)
                 this.duration = pos;
             return true;
         });
     }
     pause() {
-        this.state = _3.default.State.PAUSED;
+        this.state = Gst.State.PAUSED;
     }
     resume() {
-        if (this.state === _3.default.State.PAUSED)
-            this.state = _3.default.State.PLAYING;
+        if (this.state === Gst.State.PAUSED)
+            this.state = Gst.State.PLAYING;
     }
     stop() {
-        this.state = _3.default.State.NULL;
+        this.state = Gst.State.NULL;
         this.duration = 0;
         if (this.timeout) {
-            _1.default.source_remove(this.timeout);
+            GLib.source_remove(this.timeout);
             this.timeout = null;
         }
         if (this.recordBus && this.handlerId) {
@@ -145,7 +142,7 @@ class Recorder extends _2.default.Object {
         if (this.file &&
             this.file.query_exists(null) &&
             this.peaks.length > 0) {
-            const recording = new recording_js_1.Recording(this.file);
+            const recording = new Recording(this.file);
             recording.peaks = this.peaks.slice();
             this.peaks.length = 0;
             return recording;
@@ -154,10 +151,10 @@ class Recorder extends _2.default.Object {
     }
     onMessageReceived(message) {
         switch (message.type) {
-            case _3.default.MessageType.ELEMENT: {
-                if (_4.default.is_missing_plugin_message(message)) {
-                    const detail = _4.default.missing_plugin_message_get_installer_detail(message);
-                    const description = _4.default.missing_plugin_message_get_description(message);
+            case Gst.MessageType.ELEMENT: {
+                if (GstPbutils.is_missing_plugin_message(message)) {
+                    const detail = GstPbutils.missing_plugin_message_get_installer_detail(message);
+                    const description = GstPbutils.missing_plugin_message_get_description(message);
                     log(`Detail: ${detail}\nDescription: ${description}`);
                     break;
                 }
@@ -169,35 +166,35 @@ class Recorder extends _2.default.Object {
                 }
                 break;
             }
-            case _3.default.MessageType.EOS:
+            case Gst.MessageType.EOS:
                 this.stop();
                 break;
-            case _3.default.MessageType.WARNING: {
+            case Gst.MessageType.WARNING: {
                 const warning = message.parse_warning()[0];
                 if (warning) {
                     log(warning.toString());
                 }
                 break;
             }
-            case _3.default.MessageType.ERROR:
+            case Gst.MessageType.ERROR:
                 log(message.parse_error().toString());
                 break;
         }
     }
     getChannel() {
-        const channelIndex = application_js_1.Settings.get_enum('audio-channel');
+        const channelIndex = Settings.get_enum('audio-channel');
         return AudioChannels[channelIndex].channels;
     }
     getProfile() {
-        const profileIndex = application_js_1.Settings.get_enum('audio-profile');
-        const profile = exports.EncodingProfiles[profileIndex];
-        const audioCaps = _3.default.Caps.from_string(profile.audioCaps);
+        const profileIndex = Settings.get_enum('audio-profile');
+        const profile = EncodingProfiles[profileIndex];
+        const audioCaps = Gst.Caps.from_string(profile.audioCaps);
         audioCaps === null || audioCaps === void 0 ? void 0 : audioCaps.set_value('channels', this.getChannel());
         if (audioCaps) {
-            const encodingProfile = _4.default.EncodingAudioProfile.new(audioCaps, null, null, 1);
-            const containerCaps = _3.default.Caps.from_string(profile.containerCaps);
+            const encodingProfile = GstPbutils.EncodingAudioProfile.new(audioCaps, null, null, 1);
+            const containerCaps = Gst.Caps.from_string(profile.containerCaps);
             if (containerCaps) {
-                const containerProfile = _4.default.EncodingContainerProfile.new('record', null, containerCaps, null);
+                const containerProfile = GstPbutils.EncodingContainerProfile.new('record', null, containerCaps, null);
                 containerProfile.add_profile(encodingProfile);
                 return containerProfile;
             }
@@ -232,20 +229,19 @@ class Recorder extends _2.default.Object {
         this.pipeState = s;
         if (this.pipeState) {
             const ret = this.pipeline.set_state(this.pipeState);
-            if (ret === _3.default.StateChangeReturn.FAILURE)
+            if (ret === Gst.StateChangeReturn.FAILURE)
                 log('Unable to update the recorder pipeline state');
         }
     }
 }
-exports.Recorder = Recorder;
 _a = Recorder;
 (() => {
-    _2.default.registerClass({
+    GObject.registerClass({
         Properties: {
-            duration: _2.default.ParamSpec.int('duration', 'Recording Duration', 'Recording duration in nanoseconds', _2.default.ParamFlags.READWRITE |
-                _2.default.ParamFlags.CONSTRUCT, 0, _1.default.MAXINT16, 0),
-            'current-peak': _2.default.ParamSpec.float('current-peak', 'Waveform current peak', 'Waveform current peak in float [0, 1]', _2.default.ParamFlags.READWRITE |
-                _2.default.ParamFlags.CONSTRUCT, 0.0, 1.0, 0.0),
+            duration: GObject.ParamSpec.int('duration', 'Recording Duration', 'Recording duration in nanoseconds', GObject.ParamFlags.READWRITE |
+                GObject.ParamFlags.CONSTRUCT, 0, GLib.MAXINT16, 0),
+            'current-peak': GObject.ParamSpec.float('current-peak', 'Waveform current peak', 'Waveform current peak in float [0, 1]', GObject.ParamFlags.READWRITE |
+                GObject.ParamFlags.CONSTRUCT, 0.0, 1.0, 0.0),
         },
     }, _a);
 })();

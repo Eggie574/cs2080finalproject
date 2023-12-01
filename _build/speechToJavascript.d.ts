@@ -1,3 +1,3 @@
 export = speechConversion;
-declare function speechConversion(name: any, mainPath: any): void;
+declare function speechConversion(mainPath: any): void;
 //# sourceMappingURL=speechToJavascript.d.ts.map

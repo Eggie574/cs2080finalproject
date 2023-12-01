@@ -1,32 +1,29 @@
-"use strict";
 var _a;
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.RecorderWidget = void 0;
 /* exported RecorderState RecorderWidget */
-const _1 = require("gi://Adw");
-const _2 = require("gi://Gio");
-const _3 = require("gi://GObject");
-const _4 = require("gi://Gtk?version=4.0");
-const utils_js_1 = require("./utils.js");
-const waveform_js_1 = require("./waveform.js");
+import Adw from 'gi://Adw';
+import Gio from 'gi://Gio';
+import GObject from 'gi://GObject';
+import Gtk from 'gi://Gtk?version=4.0';
+import { formatTime } from './utils.js';
+import { WaveForm, WaveType } from './waveform.js';
 var RecorderState;
 (function (RecorderState) {
     RecorderState[RecorderState["Recording"] = 0] = "Recording";
     RecorderState[RecorderState["Paused"] = 1] = "Paused";
     RecorderState[RecorderState["Stopped"] = 2] = "Stopped";
 })(RecorderState || (RecorderState = {}));
-class RecorderWidget extends _4.default.Box {
+export class RecorderWidget extends Gtk.Box {
     constructor(recorder) {
         super();
         this.recorder = recorder;
-        this.waveform = new waveform_js_1.WaveForm({
+        this.waveform = new WaveForm({
             vexpand: true,
-            valign: _4.default.Align.FILL,
-        }, waveform_js_1.WaveType.Recorder);
+            valign: Gtk.Align.FILL,
+        }, WaveType.Recorder);
         this._recorderBox.prepend(this.waveform);
-        this.recorder.bind_property('current-peak', this.waveform, 'peak', _3.default.BindingFlags.SYNC_CREATE | _3.default.BindingFlags.DEFAULT);
+        this.recorder.bind_property('current-peak', this.waveform, 'peak', GObject.BindingFlags.SYNC_CREATE | GObject.BindingFlags.DEFAULT);
         this.recorder.connect('notify::duration', (_recorder) => {
-            this._recorderTime.set_markup((0, utils_js_1.formatTime)(_recorder.duration));
+            this._recorderTime.set_markup(formatTime(_recorder.duration));
         });
         const actions = [
             { name: 'start', callback: this.onStart.bind(this), enabled: true },
@@ -47,15 +44,15 @@ class RecorderWidget extends _4.default.Box {
                 enabled: false,
             },
         ];
-        this.actionsGroup = new _2.default.SimpleActionGroup();
+        this.actionsGroup = new Gio.SimpleActionGroup();
         for (const { name, callback, enabled } of actions) {
-            const action = new _2.default.SimpleAction({ name, enabled });
+            const action = new Gio.SimpleAction({ name, enabled });
             action.connect('activate', callback);
             this.actionsGroup.add_action(action);
         }
         const cancelAction = this.actionsGroup.lookup('cancel');
         const startAction = this.actionsGroup.lookup('start');
-        startAction.bind_property('enabled', cancelAction, 'enabled', _3.default.BindingFlags.INVERT_BOOLEAN);
+        startAction.bind_property('enabled', cancelAction, 'enabled', GObject.BindingFlags.INVERT_BOOLEAN);
     }
     onPause() {
         this._playbackStack.visible_child_name = 'recorder-start';
@@ -77,14 +74,14 @@ class RecorderWidget extends _4.default.Box {
     }
     onCancel() {
         this.onPause();
-        const dialog = new _1.default.MessageDialog({
+        const dialog = new Adw.MessageDialog({
             heading: _('Delete Recording?'),
             body: _('This recording will not be saved.'),
             transient_for: this.root,
         });
         dialog.add_response('close', _('_Resume'));
         dialog.add_response('delete', _('_Delete'));
-        dialog.set_response_appearance('delete', _1.default.ResponseAppearance.DESTRUCTIVE);
+        dialog.set_response_appearance('delete', Adw.ResponseAppearance.DESTRUCTIVE);
         dialog.set_default_response('close');
         dialog.connect('response::delete', () => {
             const recording = this.recorder.stop();
@@ -133,10 +130,9 @@ class RecorderWidget extends _4.default.Box {
         }
     }
 }
-exports.RecorderWidget = RecorderWidget;
 _a = RecorderWidget;
 (() => {
-    _3.default.registerClass({
+    GObject.registerClass({
         Template: 'resource:///org/gnome/SoundRecorder/ui/recorder.ui',
         InternalChildren: [
             'recorderBox',
@@ -150,7 +146,7 @@ _a = RecorderWidget;
             paused: {},
             resumed: {},
             started: {},
-            stopped: { param_types: [_3.default.TYPE_OBJECT] },
+            stopped: { param_types: [GObject.TYPE_OBJECT] },
         },
     }, _a);
 })();

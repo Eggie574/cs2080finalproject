@@ -1,4 +1,3 @@
-"use strict";
 /* exported Window */
 /*
  * Copyright 2013 Meg Ford
@@ -19,36 +18,34 @@
  *
  */
 var _a;
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.Window = void 0;
-const _1 = require("gi://Adw");
-const _2 = require("gi://Gio");
-const _3 = require("gi://GLib");
-const _4 = require("gi://GObject");
-const _5 = require("gi://Gst");
-const _6 = require("gi://GstPlayer");
-const recorder_js_1 = require("./recorder.js");
-const recordingList_js_1 = require("./recordingList.js");
-const recordingListWidget_js_1 = require("./recordingListWidget.js");
-const recorderWidget_js_1 = require("./recorderWidget.js");
+import Adw from 'gi://Adw';
+import Gio from 'gi://Gio';
+import GLib from 'gi://GLib';
+import GObject from 'gi://GObject';
+import Gst from 'gi://Gst';
+import GstPlayer from 'gi://GstPlayer';
+import { Recorder } from './recorder.js';
+import { RecordingList } from './recordingList.js';
+import { RecordingsListWidget } from './recordingListWidget.js';
+import { RecorderWidget } from './recorderWidget.js';
 var WindowState;
 (function (WindowState) {
     WindowState[WindowState["Empty"] = 0] = "Empty";
     WindowState[WindowState["List"] = 1] = "List";
     WindowState[WindowState["Recorder"] = 2] = "Recorder";
 })(WindowState || (WindowState = {}));
-class Window extends _1.default.ApplicationWindow {
+export class Window extends Adw.ApplicationWindow {
     constructor(params) {
         super(params);
         this.iconName = pkg.name;
         this._state = WindowState.Empty;
-        this.recorder = new recorder_js_1.Recorder();
-        this.recorderWidget = new recorderWidget_js_1.RecorderWidget(this.recorder);
+        this.recorder = new Recorder();
+        this.recorderWidget = new RecorderWidget(this.recorder);
         this._mainStack.add_named(this.recorderWidget, 'recorder');
-        const dispatcher = _6.default.PlayerGMainContextSignalDispatcher.new(null);
-        this.player = _6.default.Player.new(null, dispatcher);
+        const dispatcher = GstPlayer.PlayerGMainContextSignalDispatcher.new(null);
+        this.player = GstPlayer.Player.new(null, dispatcher);
         this.player.connect('end-of-stream', () => this.player.stop());
-        this.recordingList = new recordingList_js_1.RecordingList();
+        this.recordingList = new RecordingList();
         this.itemsSignalId = this.recordingList.connect('items-changed', () => {
             if (this.state !== WindowState.Recorder) {
                 if (this.recordingList.get_n_items() === 0)
@@ -57,7 +54,7 @@ class Window extends _1.default.ApplicationWindow {
                     this.state = WindowState.List;
             }
         });
-        this.recordingListWidget = new recordingListWidget_js_1.RecordingsListWidget(this.recordingList, this.player);
+        this.recordingListWidget = new RecordingsListWidget(this.recordingList, this.player);
         this.recordingListWidget.connect('row-deleted', (_listBox, recording, index) => {
             this.recordingList.remove(index);
             let message;
@@ -71,16 +68,16 @@ class Window extends _1.default.ApplicationWindow {
         });
         this.toastUndo = false;
         this.undoSignalID = null;
-        this.undoAction = new _2.default.SimpleAction({ name: 'undo' });
+        this.undoAction = new Gio.SimpleAction({ name: 'undo' });
         this.add_action(this.undoAction);
-        const openMenuAction = new _2.default.SimpleAction({
+        const openMenuAction = new Gio.SimpleAction({
             name: 'open-primary-menu',
-            state: new _3.default.Variant('b', true),
+            state: new GLib.Variant('b', true),
         });
         openMenuAction.connect('activate', (action) => {
             var _b;
             const state = (_b = action.get_state()) === null || _b === void 0 ? void 0 : _b.get_boolean();
-            action.state = new _3.default.Variant('b', !state);
+            action.state = new GLib.Variant('b', !state);
         });
         this.add_action(openMenuAction);
         this._column.set_child(this.recordingListWidget);
@@ -97,7 +94,7 @@ class Window extends _1.default.ApplicationWindow {
         for (let i = 0; i < this.recordingList.get_n_items(); i++) {
             const recording = this.recordingList.get_item(i);
             if (recording.pipeline)
-                recording.pipeline.set_state(_5.default.State.NULL);
+                recording.pipeline.set_state(Gst.State.NULL);
         }
         this.recorder.stop();
         return false;
@@ -122,7 +119,7 @@ class Window extends _1.default.ApplicationWindow {
         this.state = WindowState.List;
     }
     sendNotification(message, recording, index) {
-        const toast = _1.default.Toast.new(message);
+        const toast = Adw.Toast.new(message);
         toast.connect('dismissed', () => {
             if (!this.toastUndo)
                 void recording.delete();
@@ -161,10 +158,9 @@ class Window extends _1.default.ApplicationWindow {
         return this._state;
     }
 }
-exports.Window = Window;
 _a = Window;
 (() => {
-    _4.default.registerClass({
+    GObject.registerClass({
         Template: 'resource:///org/gnome/SoundRecorder/ui/window.ui',
         InternalChildren: [
             'mainStack',

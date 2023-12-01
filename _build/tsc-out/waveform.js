@@ -1,4 +1,3 @@
-"use strict";
 /* exported WaveForm
 /*
  * Copyright 2013 Meg Ford
@@ -21,40 +20,38 @@
  *
  */
 var _a;
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.WaveForm = exports.WaveType = void 0;
 // based on code from Pitivi
-const _1 = require("gi://Adw");
-const _2 = require("gi://GObject");
-const _3 = require("gi://Gtk?version=4.0");
+import Adw from 'gi://Adw';
+import GObject from 'gi://GObject';
+import Gtk from 'gi://Gtk?version=4.0';
 // @ts-expect-error This module doesn't import nicely
-const cairo_1 = require("cairo");
-var WaveType;
+import Cairo from 'cairo';
+export var WaveType;
 (function (WaveType) {
     WaveType[WaveType["Recorder"] = 0] = "Recorder";
     WaveType[WaveType["Player"] = 1] = "Player";
-})(WaveType || (exports.WaveType = WaveType = {}));
+})(WaveType || (WaveType = {}));
 const GUTTER = 4;
-class WaveForm extends _3.default.DrawingArea {
+export class WaveForm extends Gtk.DrawingArea {
     constructor(params, type) {
         super(params);
         this._peaks = [];
         this._position = 0;
         this.waveType = type;
         if (this.waveType === WaveType.Player) {
-            this.dragGesture = _3.default.GestureDrag.new();
+            this.dragGesture = Gtk.GestureDrag.new();
             this.dragGesture.connect('drag-begin', this.dragBegin.bind(this));
             this.dragGesture.connect('drag-update', this.dragUpdate.bind(this));
             this.dragGesture.connect('drag-end', this.dragEnd.bind(this));
             this.add_controller(this.dragGesture);
         }
-        this.hcId = _1.default.StyleManager.get_default().connect('notify::high-contrast', () => {
+        this.hcId = Adw.StyleManager.get_default().connect('notify::high-contrast', () => {
             this.queue_draw();
         });
         this.set_draw_func(this.drawFunc.bind(this));
     }
     dragBegin(gesture) {
-        gesture.set_state(_3.default.EventSequenceState.CLAIMED);
+        gesture.set_state(Gtk.EventSequenceState.CLAIMED);
         this.emit('gesture-pressed');
     }
     dragUpdate(_gesture, offsetX) {
@@ -88,7 +85,7 @@ class WaveForm extends _3.default.DrawingArea {
         // We keep them to the minimum possible scope to catch real errors.
         /* eslint-disable @typescript-eslint/no-unsafe-call */
         /* eslint-disable @typescript-eslint/no-unsafe-member-access */
-        ctx.setLineCap(cairo_1.default.LineCap.ROUND);
+        ctx.setLineCap(Cairo.LineCap.ROUND);
         ctx.setLineWidth(2);
         da.setSourceRGBA(ctx, dividerColor);
         ctx.moveTo(horizCenter, vertiCenter - maxHeight);
@@ -153,23 +150,22 @@ class WaveForm extends _3.default.DrawingArea {
         /* eslint-enable @typescript-eslint/no-unsafe-member-access */
     }
     destroy() {
-        _1.default.StyleManager.get_default().disconnect(this.hcId);
+        Adw.StyleManager.get_default().disconnect(this.hcId);
         this._peaks.length = 0;
         this.queue_draw();
     }
 }
-exports.WaveForm = WaveForm;
 _a = WaveForm;
 (() => {
-    _2.default.registerClass({
+    GObject.registerClass({
         Properties: {
-            position: _2.default.ParamSpec.float('position', 'Waveform position', 'Waveform position', _2.default.ParamFlags.READWRITE |
-                _2.default.ParamFlags.CONSTRUCT, 0.0, 1.0, 0.0),
-            peak: _2.default.ParamSpec.float('peak', 'Waveform current peak', 'Waveform current peak in float [0, 1]', _2.default.ParamFlags.READWRITE |
-                _2.default.ParamFlags.CONSTRUCT, 0.0, 1.0, 0.0),
+            position: GObject.ParamSpec.float('position', 'Waveform position', 'Waveform position', GObject.ParamFlags.READWRITE |
+                GObject.ParamFlags.CONSTRUCT, 0.0, 1.0, 0.0),
+            peak: GObject.ParamSpec.float('peak', 'Waveform current peak', 'Waveform current peak in float [0, 1]', GObject.ParamFlags.READWRITE |
+                GObject.ParamFlags.CONSTRUCT, 0.0, 1.0, 0.0),
         },
         Signals: {
-            'position-changed': { param_types: [_2.default.TYPE_DOUBLE] },
+            'position-changed': { param_types: [GObject.TYPE_DOUBLE] },
             'gesture-pressed': {},
         },
     }, _a);

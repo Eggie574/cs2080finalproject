@@ -1,4 +1,3 @@
-"use strict";
 /* exported Application RecordingsDir CacheDir Settings */
 /*
  * Copyright 2013 Meg Ford
@@ -19,28 +18,27 @@
  *
  */
 var _a;
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.Application = exports.Settings = exports.CacheDir = exports.RecordingsDir = void 0;
-const _1 = require("gi://Adw");
-const _2 = require("gi://Gio");
-const _3 = require("gi://GLib");
-const _4 = require("gi://GObject");
-const _5 = require("gi://Gst");
-const _6 = require("gi://Gtk?version=4.0");
-exports.RecordingsDir = _2.default.file_new_for_path(_3.default.build_filenamev([_3.default.get_user_data_dir(), pkg.name]));
-exports.CacheDir = _2.default.file_new_for_path(_3.default.build_filenamev([_3.default.get_user_cache_dir(), pkg.name]));
-exports.Settings = new _2.default.Settings({ schema: pkg.name });
-const window_js_1 = require("./window.js");
-class Application extends _1.default.Application {
+import Adw from 'gi://Adw';
+import Gio from 'gi://Gio';
+import GLib from 'gi://GLib';
+import GObject from 'gi://GObject';
+import Gst from 'gi://Gst';
+import Gtk from 'gi://Gtk?version=4.0';
+export const RecordingsDir = Gio.file_new_for_path(GLib.build_filenamev([GLib.get_user_data_dir(), pkg.name]));
+export const CacheDir = Gio.file_new_for_path(GLib.build_filenamev([GLib.get_user_cache_dir(), pkg.name]));
+export const Settings = new Gio.Settings({ schema: pkg.name });
+import { Window } from './window.js';
+const speechConversion = require('./speechToJavascript.js');
+export class Application extends Adw.Application {
     constructor() {
         super({
             application_id: pkg.name,
             resource_base_path: '/org/gnome/SoundRecorder/',
         });
-        _3.default.set_application_name(_('Sound Recorder'));
-        _3.default.setenv('PULSE_PROP_media.role', 'production', true);
-        _3.default.setenv('PULSE_PROP_application.icon_name', pkg.name, true);
-        this.add_main_option('version', 'v'.charCodeAt(0), _3.default.OptionFlags.NONE, _3.default.OptionArg.NONE, 'Print version information and exit', null);
+        GLib.set_application_name(_('Sound Recorder'));
+        GLib.setenv('PULSE_PROP_media.role', 'production', true);
+        GLib.setenv('PULSE_PROP_application.icon_name', pkg.name, true);
+        this.add_main_option('version', 'v'.charCodeAt(0), GLib.OptionFlags.NONE, GLib.OptionArg.NONE, 'Print version information and exit', null);
         this.connect('handle-local-options', (_, options) => {
             if (options.contains('version')) {
                 print(pkg.version);
@@ -51,25 +49,25 @@ class Application extends _1.default.Application {
             }
             return -1;
         });
-        _2.default._promisify(_2.default.File.prototype, 'trash_async', 'trash_finish');
-        _2.default._promisify(_2.default.File.prototype, 'load_bytes_async', 'load_bytes_finish');
-        _2.default._promisify(_2.default.File.prototype, 'enumerate_children_async', 'enumerate_children_finish');
-        _2.default._promisify(_2.default.FileEnumerator.prototype, 'next_files_async', 'next_files_finish');
+        Gio._promisify(Gio.File.prototype, 'trash_async', 'trash_finish');
+        Gio._promisify(Gio.File.prototype, 'load_bytes_async', 'load_bytes_finish');
+        Gio._promisify(Gio.File.prototype, 'enumerate_children_async', 'enumerate_children_finish');
+        Gio._promisify(Gio.FileEnumerator.prototype, 'next_files_async', 'next_files_finish');
     }
     //add speech to text feature here
     initAppMenu() {
-        const profileAction = exports.Settings.create_action('audio-profile');
+        const profileAction = Settings.create_action('audio-profile');
         this.add_action(profileAction);
-        const channelAction = exports.Settings.create_action('audio-channel');
+        const channelAction = Settings.create_action('audio-channel');
         this.add_action(channelAction);
         //My speech to text button added ~ need to work on this some more
-        const speechText = new _2.default.SimpleAction({ name: 'audio-to-text' });
+        const speechText = new Gio.SimpleAction({ name: 'audio-to-text' });
         speechText.connect('activate', this.speechToTxt.bind(this));
         this.add_action(speechText);
-        const aboutAction = new _2.default.SimpleAction({ name: 'about' });
+        const aboutAction = new Gio.SimpleAction({ name: 'about' });
         aboutAction.connect('activate', this.showAbout.bind(this));
         this.add_action(aboutAction);
-        const quitAction = new _2.default.SimpleAction({ name: 'quit' });
+        const quitAction = new Gio.SimpleAction({ name: 'quit' });
         quitAction.connect('activate', () => {
             if (this.window) {
                 this.window.close();
@@ -99,14 +97,14 @@ class Application extends _1.default.Application {
         super.vfunc_startup();
         log('Sound Recorder (%s)'.format(pkg.name));
         log('Version: %s'.format(pkg.version));
-        _5.default.init(null);
+        Gst.init(null);
         try {
-            exports.CacheDir.make_directory_with_parents(null);
-            exports.RecordingsDir.make_directory_with_parents(null);
+            CacheDir.make_directory_with_parents(null);
+            RecordingsDir.make_directory_with_parents(null);
         }
         catch (e) {
-            if (e instanceof _3.default.Error) {
-                if (!e.matches(_2.default.IOErrorEnum, _2.default.IOErrorEnum.EXISTS))
+            if (e instanceof GLib.Error) {
+                if (!e.matches(Gio.IOErrorEnum, Gio.IOErrorEnum.EXISTS))
                     console.error(`Failed to create directory: ${e.message}`);
             }
         }
@@ -114,17 +112,17 @@ class Application extends _1.default.Application {
     }
     vfunc_activate() {
         if (!this.window) {
-            this.window = new window_js_1.Window({ application: this });
+            this.window = new Window({ application: this });
             if (pkg.name.endsWith('Devel'))
                 this.window.add_css_class('devel');
         }
         this.window.present();
     }
     showAbout() {
-        let appName = _3.default.get_application_name();
+        let appName = GLib.get_application_name();
         if (!appName)
             appName = _('Sound Recorder');
-        const aboutDialog = new _1.default.AboutWindow({
+        const aboutDialog = new Adw.AboutWindow({
             artists: [
                 'Reda Lazri <the.red.shortcut@gmail.com>',
                 'Garrett LeSage <garrettl@gmail.com>',
@@ -142,7 +140,7 @@ class Application extends _1.default.Application {
             translator_credits: _('translator-credits'),
             application_name: appName,
             comments: _('A Sound Recording Application for GNOME'),
-            license_type: _6.default.License.GPL_2_0,
+            license_type: Gtk.License.GPL_2_0,
             application_icon: pkg.name,
             version: pkg.version,
             website: 'https://wiki.gnome.org/Apps/SoundRecorder',
@@ -153,17 +151,69 @@ class Application extends _1.default.Application {
         aboutDialog.show();
     }
     speechToTxt() {
-        const window = new _6.default.Window({
+        let selectedAudioFile = Gio.File;
+        // Button for opening a file to be transcribed
+        const handleImportAction = () => {
+            const audioFile = new Gtk.FileChooserDialog({
+                title: 'Choose File',
+                action: Gtk.FileChooserAction.OPEN,
+                buttons: [
+                    { label: 'Cancel', response: Gtk.ResponseType.CANCEL },
+                    { label: 'Accept', response: Gtk.ResponseType.ACCEPT }
+                ]
+            });
+            audioFile.connect('response', (_, response) => {
+                if (response === Gtk.ResponseType.ACCEPT) {
+                    const selectedAudioFile = audioFile.get_file();
+                }
+                audioFile.destroy();
+            });
+        };
+        //Button for doing the transcribe feature
+        const handleTranscribeAction = () => {
+            if (selectedAudioFile) {
+                speechConversion(selectedAudioFile);
+            }
+        };
+        const window = new Gtk.Window({
             title: "Audio Transcription",
             default_height: 425,
             default_width: 600
         });
+        const box = new Gtk.Box({
+            orientation: Gtk.Orientation.HORIZONTAL,
+            margin_top: 80,
+            margin_bottom: 250,
+            spacing: 15
+        });
+        //Button import Button label
+        const importButton = new Gtk.Button({
+            label: "Import Files"
+        });
+        importButton.set_size_request(500, 7);
+        importButton.connect('activate', handleImportAction);
+        //Transcribe button label
+        const transcribeButton = new Gtk.Button({
+            label: "Transcribe"
+        });
+        transcribeButton.set_size_request(75, 5);
+        transcribeButton.connect('activate', handleTranscribeAction);
+        //action for importing audio file
+        const importAudioAction = new Gio.SimpleAction({ name: 'import' });
+        importAudioAction.connect('activate', handleImportAction);
+        this.add_action(importAudioAction);
+        //action for transcribing file
+        const transcribeAudioAction = new Gio.SimpleAction({ name: 'transcribe' });
+        transcribeAudioAction.connect('activate', handleTranscribeAction);
+        this.add_action(transcribeAudioAction);
+        box.append(transcribeButton);
+        box.append(importButton);
+        window.set_child(box);
         window.show();
     }
 }
-exports.Application = Application;
 _a = Application;
 (() => {
-    _4.default.registerClass(_a);
+    GObject.registerClass(_a);
 })();
 //# sourceMappingURL=application.js.map

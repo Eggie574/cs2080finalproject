@@ -1,6 +1,3 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.displayDateTime = exports.formatTime = void 0;
 /* exported displayDateTime formatTime */
 /*
  * Copyright 2013 Meg Ford
@@ -20,11 +17,11 @@ exports.displayDateTime = exports.formatTime = void 0;
  * Author: Meg Ford <megford@gnome.org>
  *
  */
-const gettext_1 = require("gettext");
-const _1 = require("gi://GLib");
-const _2 = require("gi://Gst");
-function formatTime(nanoSeconds) {
-    const time = new Date(0, 0, 0, 0, 0, 0, nanoSeconds / _2.default.MSECOND);
+import Gettext from 'gettext';
+import GLib from 'gi://GLib';
+import Gst from 'gi://Gst';
+export function formatTime(nanoSeconds) {
+    const time = new Date(0, 0, 0, 0, 0, 0, nanoSeconds / Gst.MSECOND);
     const miliseconds = (time.getMilliseconds() / 100).toString();
     const seconds = time.getSeconds().toString().padStart(2, '0');
     const minutes = time.getMinutes().toString().padStart(2, '0');
@@ -32,10 +29,9 @@ function formatTime(nanoSeconds) {
     // eslint-disable-next-line no-irregular-whitespace
     return `${hours} ∶ ${minutes} ∶ ${seconds} . <small>${miliseconds}</small>`;
 }
-exports.formatTime = formatTime;
-function displayDateTime(time) {
+export function displayDateTime(time) {
     const DAY = 86400000000;
-    const now = _1.default.DateTime.new_now_local();
+    const now = GLib.DateTime.new_now_local();
     const difference = now.difference(time);
     const days = Math.floor(difference / DAY);
     const weeks = Math.floor(difference / (7 * DAY));
@@ -52,24 +48,23 @@ function displayDateTime(time) {
     }
     else if (difference < 7 * DAY) {
         ``;
-        return gettext_1.default.ngettext('%d day ago', '%d days ago', days).format(days);
+        return Gettext.ngettext('%d day ago', '%d days ago', days).format(days);
     }
     else if (difference < 14 * DAY) {
         return _('Last week');
     }
     else if (difference < 28 * DAY) {
-        return gettext_1.default.ngettext('%d week ago', '%d weeks ago', weeks).format(weeks);
+        return Gettext.ngettext('%d week ago', '%d weeks ago', weeks).format(weeks);
     }
     else if (difference < 60 * DAY) {
         return _('Last month');
     }
     else if (difference < 360 * DAY) {
-        return gettext_1.default.ngettext('%d month ago', '%d months ago', months).format(months);
+        return Gettext.ngettext('%d month ago', '%d months ago', months).format(months);
     }
     else if (difference < 730 * DAY) {
         return _('Last year');
     }
-    return gettext_1.default.ngettext('%d year ago', '%d years ago', years).format(years);
+    return Gettext.ngettext('%d year ago', '%d years ago', years).format(years);
 }
-exports.displayDateTime = displayDateTime;
 //# sourceMappingURL=utils.js.map

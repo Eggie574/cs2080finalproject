@@ -6,7 +6,7 @@ const Gio = gi.require('Gio', '2.0');   //will worry about this later
 
 
 
-function speechConversion(name, mainPath) {
+function speechConversion(mainPath) {
 
     //const recordingPath = mainPath + '/' + name
 

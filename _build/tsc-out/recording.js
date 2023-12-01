@@ -1,19 +1,16 @@
-"use strict";
 var _a;
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.Recording = void 0;
 /* exported Recording */
-const _1 = require("gi://Gio");
-const _2 = require("gi://GLib");
-const _3 = require("gi://GObject");
-const _4 = require("gi://Gst");
-const _5 = require("gi://GstPbutils");
-const application_js_1 = require("./application.js");
-const recorder_js_1 = require("./recorder.js");
+import Gio from 'gi://Gio';
+import GLib from 'gi://GLib';
+import GObject from 'gi://GObject';
+import Gst from 'gi://Gst';
+import GstPbutils from 'gi://GstPbutils';
+import { CacheDir } from './application.js';
+import { EncodingProfiles } from './recorder.js';
 function isNumArray(input) {
     return Array.isArray(input) && input.every((i) => typeof i === 'number');
 }
-class Recording extends _3.default.Object {
+export class Recording extends GObject.Object {
     constructor(file) {
         super();
         this._file = file;
@@ -21,7 +18,7 @@ class Recording extends _3.default.Object {
         this.loadedPeaks = [];
         const info = file.query_info('time::created,time::modified,standard::content-type', 0, null);
         const contentType = info.get_attribute_string('standard::content-type');
-        for (const profile of recorder_js_1.EncodingProfiles) {
+        for (const profile of EncodingProfiles) {
             if (profile.contentType === contentType) {
                 this._extension = profile.extension;
                 break;
@@ -29,9 +26,9 @@ class Recording extends _3.default.Object {
         }
         const timeModified = info.get_attribute_uint64('time::modified');
         const timeCreated = info.get_attribute_uint64('time::created');
-        this._timeModified = _2.default.DateTime.new_from_unix_local(timeModified);
-        this._timeCreated = _2.default.DateTime.new_from_unix_local(timeCreated);
-        const discoverer = new _5.default.Discoverer();
+        this._timeModified = GLib.DateTime.new_from_unix_local(timeModified);
+        this._timeCreated = GLib.DateTime.new_from_unix_local(timeCreated);
+        const discoverer = new GstPbutils.Discoverer();
         discoverer.start();
         discoverer.connect('discovered', (_discoverer, audioInfo) => {
             this._duration = audioInfo.get_duration();
@@ -78,7 +75,7 @@ class Recording extends _3.default.Object {
             this.emit('peaks-updated');
             const enc = new TextEncoder();
             const contents = enc.encode(JSON.stringify(data));
-            this.waveformCache.replace_contents_async(contents, null, false, _1.default.FileCreateFlags.REPLACE_DESTINATION, null, null);
+            this.waveformCache.replace_contents_async(contents, null, false, Gio.FileCreateFlags.REPLACE_DESTINATION, null, null);
         }
     }
     // eslint-disable-next-line camelcase
@@ -86,11 +83,11 @@ class Recording extends _3.default.Object {
         return this._peaks;
     }
     async delete() {
-        await this._file.trash_async(_2.default.PRIORITY_HIGH, null);
-        await this.waveformCache.trash_async(_2.default.PRIORITY_DEFAULT, null);
+        await this._file.trash_async(GLib.PRIORITY_HIGH, null);
+        await this.waveformCache.trash_async(GLib.PRIORITY_DEFAULT, null);
     }
     save(dest) {
-        this.file.copy_async(dest, _1.default.FileCreateFlags.NONE, _2.default.PRIORITY_DEFAULT, null, 
+        this.file.copy_async(dest, Gio.FileCreateFlags.NONE, GLib.PRIORITY_DEFAULT, null, 
         // @ts-expect-error TypeScript isn't reading async function params correctly
         null, (obj, res) => {
             if (obj.copy_finish(res))
@@ -98,7 +95,7 @@ class Recording extends _3.default.Object {
         });
     }
     get waveformCache() {
-        return application_js_1.CacheDir.get_child(`${this.name}_data`);
+        return CacheDir.get_child(`${this.name}_data`);
     }
     async loadPeaks() {
         try {
@@ -113,19 +110,19 @@ class Recording extends _3.default.Object {
                         this.emit('peaks-updated');
                     }
                     else {
-                        throw new _2.default.NumberParserError({
+                        throw new GLib.NumberParserError({
                             message: 'Failed to parse waveform',
-                            code: _2.default.NumberParserError.INVALID,
+                            code: GLib.NumberParserError.INVALID,
                         });
                     }
                 }
             }
         }
         catch (error) {
-            if (error instanceof _2.default.Error) {
+            if (error instanceof GLib.Error) {
                 log(`Error reading waveform data file: ${error.message}`);
-                if (error.matches(_1.default.IOErrorEnum, _1.default.IOErrorEnum.NOT_FOUND) ||
-                    error.matches(_2.default.NumberParserError, _2.default.NumberParserError.INVALID)) {
+                if (error.matches(Gio.IOErrorEnum, Gio.IOErrorEnum.NOT_FOUND) ||
+                    error.matches(GLib.NumberParserError, GLib.NumberParserError.INVALID)) {
                     this.emit('peaks-loading');
                     this.generatePeaks();
                 }
@@ -133,19 +130,19 @@ class Recording extends _3.default.Object {
         }
     }
     generatePeaks() {
-        this.pipeline = _4.default.parse_launch('uridecodebin name=uridecodebin ! audioconvert ! audio/x-raw,channels=1 ! level name=level ! fakesink name=faked');
+        this.pipeline = Gst.parse_launch('uridecodebin name=uridecodebin ! audioconvert ! audio/x-raw,channels=1 ! level name=level ! fakesink name=faked');
         const uridecodebin = this.pipeline.get_by_name('uridecodebin');
         uridecodebin === null || uridecodebin === void 0 ? void 0 : uridecodebin.set_property('uri', this.uri);
         const fakesink = this.pipeline.get_by_name('faked');
         fakesink === null || fakesink === void 0 ? void 0 : fakesink.set_property('qos', false);
         fakesink === null || fakesink === void 0 ? void 0 : fakesink.set_property('sync', true);
         const bus = this.pipeline.get_bus();
-        this.pipeline.set_state(_4.default.State.PLAYING);
+        this.pipeline.set_state(Gst.State.PLAYING);
         bus === null || bus === void 0 ? void 0 : bus.add_signal_watch();
         bus === null || bus === void 0 ? void 0 : bus.connect('message', (_bus, message) => {
             var _b;
             switch (message.type) {
-                case _4.default.MessageType.ELEMENT: {
+                case Gst.MessageType.ELEMENT: {
                     const s = message.get_structure();
                     if (s && s.has_name('level')) {
                         const peakVal = s.get_value('peak');
@@ -156,28 +153,27 @@ class Recording extends _3.default.Object {
                     }
                     break;
                 }
-                case _4.default.MessageType.EOS:
+                case Gst.MessageType.EOS:
                     this.peaks = this.loadedPeaks;
-                    (_b = this.pipeline) === null || _b === void 0 ? void 0 : _b.set_state(_4.default.State.NULL);
+                    (_b = this.pipeline) === null || _b === void 0 ? void 0 : _b.set_state(Gst.State.NULL);
                     this.pipeline = null;
                     break;
             }
         });
     }
 }
-exports.Recording = Recording;
 _a = Recording;
 (() => {
-    _3.default.registerClass({
+    GObject.registerClass({
         Signals: {
             'peaks-updated': {},
             'peaks-loading': {},
         },
         Properties: {
-            duration: _3.default.ParamSpec.int('duration', 'Recording Duration', 'Recording duration in nanoseconds', _3.default.ParamFlags.READWRITE |
-                _3.default.ParamFlags.CONSTRUCT, 0, _2.default.MAXINT16, 0),
-            name: _3.default.ParamSpec.string('name', 'Recording Name', 'Recording name in string', _3.default.ParamFlags.READWRITE |
-                _3.default.ParamFlags.CONSTRUCT, ''),
+            duration: GObject.ParamSpec.int('duration', 'Recording Duration', 'Recording duration in nanoseconds', GObject.ParamFlags.READWRITE |
+                GObject.ParamFlags.CONSTRUCT, 0, GLib.MAXINT16, 0),
+            name: GObject.ParamSpec.string('name', 'Recording Name', 'Recording name in string', GObject.ParamFlags.READWRITE |
+                GObject.ParamFlags.CONSTRUCT, ''),
         },
     }, _a);
 })();

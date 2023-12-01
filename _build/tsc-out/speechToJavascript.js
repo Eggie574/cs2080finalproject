@@ -4,7 +4,7 @@ const fs = require('fs');
 const gi = require('node-gtk');
 const path = require('path');
 const Gio = gi.require('Gio', '2.0'); //will worry about this later
-function speechConversion(name, mainPath) {
+function speechConversion(mainPath) {
     //const recordingPath = mainPath + '/' + name
     // Assuming 'SpeechToText.py' is the correct file name
     const pythonScriptPath = path.join(__dirname, 'speechToText.py');

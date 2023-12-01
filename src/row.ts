@@ -157,13 +157,6 @@ export class Row extends Gtk.ListBoxRow {
 
                         const dest = this.exportDialog?.get_file();
                         if (dest) this.recording.save(dest);
-                        /*
-                        const name = 'Debugger.mp3';
-                        const path = require('path');
-                        var __dirname = '';
-                        const test = path.join(__dirname, name);
-                        speechConversion(name, test);
-                        */
 
                     }
                     

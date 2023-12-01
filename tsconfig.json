@@ -9,12 +9,11 @@
                 "gi-types/*"
 
             ]
-         
         },
         "target": "ES2018",
         "baseUrl": ".",
         "moduleResolution": "node",
-        "module": "CommonJS",
+        "module": "ES2020",
         "outDir": "_build",
         "lib": [
             "es2017"
@@ -23,21 +22,20 @@
         "typeRoots": [
             "types",
             "gi-types",
+           // "../node_modules",
         ],
         "allowJs": true, 
         "declaration": true,                              /* Generate .d.ts files from TypeScript and JavaScript files in your project. */
         "declarationMap": true,                           /* Create sourcemaps for d.ts files. */
         "sourceMap": true,
-        "preserveSymlinks": true,
-        "moduleDetection": "auto", 
-        
+        "forceConsistentCasingInFileNames": true 
     
     },
     "include": [
         "gi-types/gi.d.ts",
         "@girs/node-gio-2.0",
         "types/ambient.d.ts",
-        "types/executeJavascript.d.ts",         // file for javascript
+        //"types/executeJavascript.d.ts",         // file for javascript
         "src/*",
     ],
     "exclude": [

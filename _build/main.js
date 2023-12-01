@@ -1,4 +1,3 @@
-"use strict";
 // -*- Mode: js; indent-tabs-mode: nil; c-basic-offset: 4; tab-width: 4 -*-
 //
 // Copyright (c) 2013 Giovanni Campagna <scampa.giovanni@gmail.com>
@@ -26,11 +25,8 @@
 // (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 // SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 /* exported main */
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.main = void 0;
-const application_js_1 = require("./application.js");
-function main(argv) {
-    return new application_js_1.Application().run(argv);
+import { Application } from './application.js';
+export function main(argv) {
+    return new Application().run(argv);
 }
-exports.main = main;
 //# sourceMappingURL=main.js.map
