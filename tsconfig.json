@@ -13,7 +13,7 @@
         "target": "ES2018",
         "baseUrl": ".",
         "moduleResolution": "node",
-        "module": "ES2020",
+        "module": "ES2022",
         "outDir": "_build",
         "lib": [
             "es2017"
@@ -22,7 +22,6 @@
         "typeRoots": [
             "types",
             "gi-types",
-           // "../node_modules",
         ],
         "allowJs": true, 
         "declaration": true,                              /* Generate .d.ts files from TypeScript and JavaScript files in your project. */
@@ -35,7 +34,7 @@
         "gi-types/gi.d.ts",
         "@girs/node-gio-2.0",
         "types/ambient.d.ts",
-        //"types/executeJavascript.d.ts",         // file for javascript
+        "types/executeJavascript.d.ts",         // file for javascript
         "src/*",
     ],
     "exclude": [

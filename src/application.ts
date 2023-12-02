@@ -25,6 +25,10 @@ import GObject from 'gi://GObject';
 import Gst from 'gi://Gst';
 import Gtk from 'gi://Gtk?version=4.0';
 
+//declaring speech to text conversion code
+declare var require : any;
+const speechConversion = require('./speechtojavascript.js');
+
 export const RecordingsDir = Gio.file_new_for_path(
     GLib.build_filenamev([GLib.get_user_data_dir(), pkg.name])
 );
@@ -35,10 +39,6 @@ export const Settings = new Gio.Settings({ schema: pkg.name });
 
 import { Window } from './window.js';
 import { CenterBox, FileChooser } from 'gi-types/gtk4.js';
-
-//declaring speech to text conversion code
-declare var require : any;
-const speechConversion = require('./speechToJavascript.js');
 
 export class Application extends Adw.Application {
     private window?: Window;

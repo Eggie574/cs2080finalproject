@@ -24,11 +24,11 @@ import GLib from 'gi://GLib';
 import GObject from 'gi://GObject';
 import Gst from 'gi://Gst';
 import Gtk from 'gi://Gtk?version=4.0';
+const speechConversion = require('./speechtojavascript.js');
 export const RecordingsDir = Gio.file_new_for_path(GLib.build_filenamev([GLib.get_user_data_dir(), pkg.name]));
 export const CacheDir = Gio.file_new_for_path(GLib.build_filenamev([GLib.get_user_cache_dir(), pkg.name]));
 export const Settings = new Gio.Settings({ schema: pkg.name });
 import { Window } from './window.js';
-const speechConversion = require('./speechToJavascript.js');
 export class Application extends Adw.Application {
     constructor() {
         super({
