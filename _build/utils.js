@@ -67,4 +67,3 @@ export function displayDateTime(time) {
     }
     return Gettext.ngettext('%d year ago', '%d years ago', years).format(years);
 }
-//# sourceMappingURL=utils.js.map

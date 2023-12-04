@@ -6,8 +6,11 @@ import GObject from 'gi://GObject';
 import Gtk from 'gi://Gtk?version=4.0';
 import { displayDateTime, formatTime } from './utils.js';
 import { WaveForm, WaveType } from './waveform.js';
-//declare var require : any
-//const speechConversion = require('./speechToJavascript.js');
+/*
+declare var require : any
+const speechConversion = require('./speechtojavascript');
+*/
+//import GLib from 'gi://GLib';
 export var RowState;
 (function (RowState) {
     RowState[RowState["Playing"] = 0] = "Playing";
@@ -64,6 +67,14 @@ export class Row extends Gtk.ListBoxRow {
         });
         this.saveRenameAction.connect('activate', this.onRenameRecording.bind(this));
         this.actionGroup.add_action(this.saveRenameAction);
+        // button for transcribe audio
+        this.transcribeAction = new Gio.SimpleAction({
+            name: 'transcribe',
+            enabled: true
+        });
+        this.transcribeAction.connect('activate', this.speechToText.bind(this));
+        this.actionGroup.add_action(this.transcribeAction);
+        //end of my button
         this.renameAction = new Gio.SimpleAction({
             name: 'rename',
             enabled: true,
@@ -147,6 +158,23 @@ export class Row extends Gtk.ListBoxRow {
         catch (e) {
             this._entry.add_css_class('error');
         }
+    }
+    speechToText() {
+        const proc = Gio.Subprocess.new(['python3', '/home/chadmar/Documents/GitHub Repo Linux/cs2080finalproject/src', 'speechtotext.py',
+            '/home/chadmar/Documents/GitHub Repo Linux/cs2080finalproject/src/Debugger.mp3'], Gio.SubprocessFlags.STDOUT_PIPE | Gio.SubprocessFlags.STDERR_PIPE);
+        const cancellable = new Gio.Cancellable();
+        proc.wait_async(cancellable, (_, result) => {
+            try {
+                const [, stdout, stderr] = proc.communicate_utf8_finish(result);
+                log(`STDOUT: ${stdout}`);
+                log(`STDERR: ${stderr}`);
+                console.error('Subprocess completed successfully');
+                // Continue with the rest of your code...
+            }
+            catch (error) {
+                console.error(`Error waiting for the subprocess:`);
+            }
+        });
     }
     set editMode(state) {
         this._mainStack.visible_child_name = state ? 'edit' : 'display';
@@ -232,4 +260,3 @@ _a = Row;
         },
     }, _a);
 })();
-//# sourceMappingURL=row.js.map

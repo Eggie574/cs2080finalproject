@@ -29,4 +29,16 @@ import { Application } from './application.js';
 export function main(argv) {
     return new Application().run(argv);
 }
-//# sourceMappingURL=main.js.map
+/*
+import Gio from 'gi://Gio';
+
+
+const proc = Gio.Subprocess.new(
+    ['python3', '/home/chadmar/Documents/GitHub Repo Linux/cs2080finalproject/src ', 'speechtotext.py',
+        '/home/chadmar/Documents/GitHub Repo Linux/cs2080finalproject/src', 'Debugger.mp3'],
+    Gio.SubprocessFlags.STDOUT_PIPE | Gio.SubprocessFlags.STDERR_PIPE);
+
+const cancellable = new Gio.Cancellable();
+
+await proc.wait_async(cancellable, null);
+*/

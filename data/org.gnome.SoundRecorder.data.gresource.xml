@@ -7,7 +7,6 @@
     <file>ui/row.ui</file>
     <file>ui/window.ui</file>
     <file alias="gtk/help-overlay.ui">ui/help-overlay.ui</file>
-    <file alias="gtk/audioTranscribe.ui">ui/audioTranscribe.ui</file>
   </gresource>
   <gresource prefix="/org/gnome/SoundRecorder/icons/16x16/actions/">
     <file compressed="true" preprocess="xml-stripblanks" alias="skip-back-symbolic.svg">icons/skip-back-symbolic.svg</file>

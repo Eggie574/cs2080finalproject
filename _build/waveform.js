@@ -170,4 +170,3 @@ _a = WaveForm;
         },
     }, _a);
 })();
-//# sourceMappingURL=waveform.js.map

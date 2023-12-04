@@ -84,4 +84,3 @@ _a = RecordingList;
 (() => {
     GObject.registerClass(_a);
 })();
-//# sourceMappingURL=recordingList.js.map

@@ -3,13 +3,12 @@ const { exec } = require('child_process');
 const fs = require('fs');
 const gi = require('node-gtk');
 const path = require('path');
-const Gio = gi.require('Gio', '2.0'); //will worry about this later
-function speechConversion(mainPath) {
-    //const recordingPath = mainPath + '/' + name
+function speechConversion(name) {
+    const recordingPath = path.join(__dirname, name);
     // Assuming 'SpeechToText.py' is the correct file name
-    const pythonScriptPath = path.join(__dirname, 'speechToText.py');
+    const pythonScriptPath = path.join(__dirname, 'speechtotext.py');
     // Command to run the Python script with the input text (wrapped in double quotes)
-    const command = `python3 "${pythonScriptPath}" "${mainPath}" `;
+    const command = `python3 "${pythonScriptPath}" "${recordingPath}" `;
     // Execute the command
     exec(command, (error, stdout, stderr) => {
         if (error) {
@@ -19,4 +18,3 @@ function speechConversion(mainPath) {
     });
 }
 module.exports = speechConversion;
-//# sourceMappingURL=speechtojavascript.js.map

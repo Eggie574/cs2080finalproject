@@ -24,7 +24,6 @@ import GLib from 'gi://GLib';
 import GObject from 'gi://GObject';
 import Gst from 'gi://Gst';
 import Gtk from 'gi://Gtk?version=4.0';
-const speechConversion = require('./speechtojavascript.js');
 export const RecordingsDir = Gio.file_new_for_path(GLib.build_filenamev([GLib.get_user_data_dir(), pkg.name]));
 export const CacheDir = Gio.file_new_for_path(GLib.build_filenamev([GLib.get_user_cache_dir(), pkg.name]));
 export const Settings = new Gio.Settings({ schema: pkg.name });
@@ -60,10 +59,6 @@ export class Application extends Adw.Application {
         this.add_action(profileAction);
         const channelAction = Settings.create_action('audio-channel');
         this.add_action(channelAction);
-        //My speech to text button added ~ need to work on this some more
-        const speechText = new Gio.SimpleAction({ name: 'audio-to-text' });
-        speechText.connect('activate', this.speechToTxt.bind(this));
-        this.add_action(speechText);
         const aboutAction = new Gio.SimpleAction({ name: 'about' });
         aboutAction.connect('activate', this.showAbout.bind(this));
         this.add_action(aboutAction);
@@ -150,70 +145,8 @@ export class Application extends Adw.Application {
         });
         aboutDialog.show();
     }
-    speechToTxt() {
-        let selectedAudioFile = Gio.File;
-        // Button for opening a file to be transcribed
-        const handleImportAction = () => {
-            const audioFile = new Gtk.FileChooserDialog({
-                title: 'Choose File',
-                action: Gtk.FileChooserAction.OPEN,
-                buttons: [
-                    { label: 'Cancel', response: Gtk.ResponseType.CANCEL },
-                    { label: 'Accept', response: Gtk.ResponseType.ACCEPT }
-                ]
-            });
-            audioFile.connect('response', (_, response) => {
-                if (response === Gtk.ResponseType.ACCEPT) {
-                    const selectedAudioFile = audioFile.get_file();
-                }
-                audioFile.destroy();
-            });
-        };
-        //Button for doing the transcribe feature
-        const handleTranscribeAction = () => {
-            if (selectedAudioFile) {
-                speechConversion(selectedAudioFile);
-            }
-        };
-        const window = new Gtk.Window({
-            title: "Audio Transcription",
-            default_height: 425,
-            default_width: 600
-        });
-        const box = new Gtk.Box({
-            orientation: Gtk.Orientation.HORIZONTAL,
-            margin_top: 80,
-            margin_bottom: 250,
-            spacing: 15
-        });
-        //Button import Button label
-        const importButton = new Gtk.Button({
-            label: "Import Files"
-        });
-        importButton.set_size_request(500, 7);
-        importButton.connect('activate', handleImportAction);
-        //Transcribe button label
-        const transcribeButton = new Gtk.Button({
-            label: "Transcribe"
-        });
-        transcribeButton.set_size_request(75, 5);
-        transcribeButton.connect('activate', handleTranscribeAction);
-        //action for importing audio file
-        const importAudioAction = new Gio.SimpleAction({ name: 'import' });
-        importAudioAction.connect('activate', handleImportAction);
-        this.add_action(importAudioAction);
-        //action for transcribing file
-        const transcribeAudioAction = new Gio.SimpleAction({ name: 'transcribe' });
-        transcribeAudioAction.connect('activate', handleTranscribeAction);
-        this.add_action(transcribeAudioAction);
-        box.append(transcribeButton);
-        box.append(importButton);
-        window.set_child(box);
-        window.show();
-    }
 }
 _a = Application;
 (() => {
     GObject.registerClass(_a);
 })();
-//# sourceMappingURL=application.js.map

@@ -142,11 +142,6 @@
         <attribute name="label" translatable="yes">About Sound Recorder</attribute>
       </item>
 
-      <item>
-        <attribute name="label" translatable="yes">Audio To Text</attribute>
-        <attribute name="action">app.audio-to-text</attribute>
-      </item>
-
     </section>
   </menu>
 </interface>

@@ -8,8 +8,13 @@ import { Recording } from './recording.js';
 import { displayDateTime, formatTime } from './utils.js';
 import { WaveForm, WaveType } from './waveform.js';
 
-//declare var require : any
-//const speechConversion = require('./speechToJavascript.js');
+/*
+declare var require : any
+const speechConversion = require('./speechtojavascript');
+*/
+
+//import GLib from 'gi://GLib';
+
 
 export enum RowState {
     Playing,
@@ -43,6 +48,7 @@ export class Row extends Gtk.ListBoxRow {
     private renameAction: Gio.SimpleAction;
     private pauseAction: Gio.SimpleAction;
     private playAction: Gio.SimpleAction;
+    private transcribeAction: Gio.SimpleAction;
     private keyController: Gtk.EventControllerKey;
 
     static {
@@ -169,7 +175,6 @@ export class Row extends Gtk.ListBoxRow {
             this.exportDialog.show();
 
         });
-
         this.actionGroup.add_action(exportAction);
 
         this.saveRenameAction = new Gio.SimpleAction({
@@ -181,6 +186,18 @@ export class Row extends Gtk.ListBoxRow {
             this.onRenameRecording.bind(this)
         );
         this.actionGroup.add_action(this.saveRenameAction);
+        
+        // button for transcribe audio
+        this.transcribeAction = new Gio.SimpleAction({
+            name: 'transcribe',
+            enabled: true
+        });
+        this.transcribeAction.connect(
+            'activate',
+            this.speechToText.bind(this)
+        );
+        this.actionGroup.add_action(this.transcribeAction);
+        //end of my button
 
         this.renameAction = new Gio.SimpleAction({
             name: 'rename',
@@ -287,6 +304,35 @@ export class Row extends Gtk.ListBoxRow {
         } catch (e) {
             this._entry.add_css_class('error');
         }
+    }
+
+    // new updated code, I dont know if it works becuase I cant test in main
+    private speechToText() : void {
+
+        const proc = Gio.Subprocess.new(
+            ['python3', '/home/chadmar/Documents/GitHub Repo Linux/cs2080finalproject/src', 'speechtotext.py',
+                '/home/chadmar/Documents/GitHub Repo Linux/cs2080finalproject/src/Debugger.mp3'],
+            Gio.SubprocessFlags.STDOUT_PIPE | Gio.SubprocessFlags.STDERR_PIPE
+        );
+        
+        const cancellable = new Gio.Cancellable();
+            
+        proc.wait_async(cancellable, (_, result) => {
+            try {
+                const [, stdout, stderr] = proc.communicate_utf8_finish(result);
+        
+                log(`STDOUT: ${stdout}`);
+                log(`STDERR: ${stderr}`);
+        
+                console.error('Subprocess completed successfully');
+        
+                // Continue with the rest of your code...
+        
+            } catch (error) {
+                console.error(`Error waiting for the subprocess:`);
+            }
+        });
+       
     }
 
     public set editMode(state: boolean) {

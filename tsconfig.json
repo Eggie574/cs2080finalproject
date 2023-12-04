@@ -6,9 +6,10 @@
             "*": [
                 "*",
                 "types/*",
-                "gi-types/*"
+                "gi-types/*",
 
             ]
+            
         },
         "target": "ES2018",
         "baseUrl": ".",
@@ -19,14 +20,13 @@
             "es2017"
         ],
         "skipLibCheck": true,
+        
         "typeRoots": [
             "types",
             "gi-types",
         ],
+
         "allowJs": true, 
-        "declaration": true,                              /* Generate .d.ts files from TypeScript and JavaScript files in your project. */
-        "declarationMap": true,                           /* Create sourcemaps for d.ts files. */
-        "sourceMap": true,
         "forceConsistentCasingInFileNames": true 
     
     },
@@ -34,7 +34,6 @@
         "gi-types/gi.d.ts",
         "@girs/node-gio-2.0",
         "types/ambient.d.ts",
-        "types/executeJavascript.d.ts",         // file for javascript
         "src/*",
     ],
     "exclude": [
