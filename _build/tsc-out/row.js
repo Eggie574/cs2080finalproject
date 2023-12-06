@@ -157,15 +157,19 @@ export class Row extends Gtk.ListBoxRow {
     }
     // new updated code, I dont know if it works becuase I cant test in main
     async speechToText() {
-        let cmd = 'python3';
+        let cmd = '/home/chadmar/Documents/GitHub Repo Linux/cs2080finalproject/myenv/bin/python3';
         try {
             const scriptPath = '/home/chadmar/Documents/GitHub Repo Linux/cs2080finalproject/src/speechtotext.py';
             const audioFilePath = '/home/chadmar/Documents/GitHub Repo Linux/cs2080finalproject/src/Debugger.mp3';
+            const test = '/Documents/GitHub Repo Linux';
+            GLib.chdir(`"${test}"`);
             GLib.spawn_command_line_async(`${cmd} "${scriptPath}" "${audioFilePath}"`);
         }
         catch (error) {
             console.error('Script is unable to run:');
         }
+        const returnTo = '/Documents/GitHub Repo Linux/cs2080finalproject/src';
+        GLib.chdir(`"${returnTo}"`);
     }
     // End of my function
     set editMode(state) {

@@ -157,7 +157,7 @@ export class Row extends Gtk.ListBoxRow {
     }
     // new updated code, I dont know if it works becuase I cant test in main
     async speechToText() {
-        let cmd = 'python3';
+        let cmd = '/home/chadmar/Documents/GitHub Repo Linux/cs2080finalproject/myenv/bin/python3';
         try {
             const scriptPath = '/home/chadmar/Documents/GitHub Repo Linux/cs2080finalproject/src/speechtotext.py';
             const audioFilePath = '/home/chadmar/Documents/GitHub Repo Linux/cs2080finalproject/src/Debugger.mp3';

@@ -1,4 +1,4 @@
-MESON_DEVENV="1"
-export MESON_DEVENV
 MESON_PROJECT_NAME="gnome-sound-recorder"
 export MESON_PROJECT_NAME
+MESON_DEVENV="1"
+export MESON_DEVENV
