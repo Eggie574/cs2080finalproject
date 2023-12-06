@@ -33,19 +33,13 @@ export function main(argv: string[]): number {
     return new Application().run(argv);
 }
 
-/*
-import Gio from 'gi://Gio';
 
 
-const proc = Gio.Subprocess.new(
-    ['python3', '/home/chadmar/Documents/GitHub Repo Linux/cs2080finalproject/src ', 'speechtotext.py',
-        '/home/chadmar/Documents/GitHub Repo Linux/cs2080finalproject/src', 'Debugger.mp3'],
-    Gio.SubprocessFlags.STDOUT_PIPE | Gio.SubprocessFlags.STDERR_PIPE);
 
-const cancellable = new Gio.Cancellable();
 
-await proc.wait_async(cancellable, null);
-*/
+
+
+
 
 
 

@@ -3,9 +3,9 @@
 #2. Install ffmpeg
 #3. Install nodejs
 
-import whisper
 import os
 import sys
+import whisper
 
 def speechConverter(audio) :
 
@@ -29,3 +29,4 @@ if __name__ == "__main__":
 
     audio = sys.argv[1]
     speechConverter(audio)
+

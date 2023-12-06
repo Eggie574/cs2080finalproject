@@ -49,7 +49,7 @@ build data/org.gnome.SoundRecorderDevel.metainfo.xml: CUSTOM_COMMAND data/org.gn
  COMMAND = /usr/bin/meson --internal msgfmthelper --msgfmt=/usr/bin/msgfmt data/org.gnome.SoundRecorder.metainfo.xml.in data/org.gnome.SoundRecorderDevel.metainfo.xml xml '/home/chadmar/Documents/GitHub$ Repo$ Linux/cs2080finalproject/po'
  description = Generating$ data/org.gnome.SoundRecorderDevel.metainfo.xml$ with$ a$ custom$ command
 
-build src/tsc-output: CUSTOM_COMMAND ../src/application.ts ../src/main.ts ../src/recorder.ts ../src/recorderWidget.ts ../src/recording.ts ../src/recordingList.ts ../src/recordingListWidget.ts ../src/row.ts ../src/utils.ts ../src/waveform.ts ../src/window.ts | /usr/lib/sdk/typescript/bin/tsc PHONY
+build src/tsc-output: CUSTOM_COMMAND ../src/application.ts ../src/main.ts ../src/recorder.ts ../src/recorderWidget.ts ../src/recording.ts ../src/recordingList.ts ../src/recordingListWidget.ts ../src/row.ts ../src/utils.ts ../src/waveform.ts ../src/window.ts ../src/speechtotext.py | /usr/lib/sdk/typescript/bin/tsc PHONY
  COMMAND = /usr/lib/sdk/typescript/bin/tsc --outDir '/home/chadmar/Documents/GitHub$ Repo$ Linux/cs2080finalproject/_build/tsc-out'
  description = Generating$ src/typescript-compile$ with$ a$ custom$ command
 

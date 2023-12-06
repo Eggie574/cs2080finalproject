@@ -1,20 +1,11 @@
-"use strict";
-const { exec } = require('child_process');
-const fs = require('fs');
-const gi = require('node-gtk');
-const path = require('path');
-function speechConversion(name) {
-    const recordingPath = path.join(__dirname, name);
-    // Assuming 'SpeechToText.py' is the correct file name
-    const pythonScriptPath = path.join(__dirname, 'speechtotext.py');
-    // Command to run the Python script with the input text (wrapped in double quotes)
-    const command = `python3 "${pythonScriptPath}" "${recordingPath}" `;
-    // Execute the command
-    exec(command, (error, stdout, stderr) => {
-        if (error) {
-            console.error(`Error: ${error.message}`);
-            return;
-        }
-    });
+// @ts-ignore
+import GLib from 'gi://GLib';
+let cmd = 'python3';
+try {
+    const scriptPath = '/home/chadmar/Documents/GitHub Repo Linux/cs2080finalproject/src/speechtotext.py';
+    const audioFilePath = '/home/chadmar/Documents/GitHub Repo Linux/cs2080finalproject/src/Debugger.mp3';
+    GLib.spawn_command_line_async(`${cmd} "${scriptPath}"  "${audioFilePath}"`);
 }
-module.exports = speechConversion;
+catch (error) {
+    //console.error('Script is unable to run:');
+}

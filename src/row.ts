@@ -3,18 +3,11 @@ import Gdk from 'gi://Gdk?version=4.0';
 import Gio from 'gi://Gio';
 import GObject from 'gi://GObject';
 import Gtk from 'gi://Gtk?version=4.0';
+import GLib from 'gi://GLib';
 
 import { Recording } from './recording.js';
 import { displayDateTime, formatTime } from './utils.js';
 import { WaveForm, WaveType } from './waveform.js';
-
-/*
-declare var require : any
-const speechConversion = require('./speechtojavascript');
-*/
-
-//import GLib from 'gi://GLib';
-
 
 export enum RowState {
     Playing,
@@ -83,7 +76,7 @@ export class Row extends Gtk.ListBoxRow {
                         'Row active status',
                         'Row active status',
                         GObject.ParamFlags.READWRITE |
-                            GObject.ParamFlags.CONSTRUCT,
+                        GObject.ParamFlags.CONSTRUCT,
                         false
                     ),
                 },
@@ -165,7 +158,7 @@ export class Row extends Gtk.ListBoxRow {
                         if (dest) this.recording.save(dest);
 
                     }
-                    
+
                     this.exportDialog?.destroy();
                     this.exportDialog = null;
 
@@ -186,7 +179,7 @@ export class Row extends Gtk.ListBoxRow {
             this.onRenameRecording.bind(this)
         );
         this.actionGroup.add_action(this.saveRenameAction);
-        
+
         // button for transcribe audio
         this.transcribeAction = new Gio.SimpleAction({
             name: 'transcribe',
@@ -307,33 +300,24 @@ export class Row extends Gtk.ListBoxRow {
     }
 
     // new updated code, I dont know if it works becuase I cant test in main
-    private speechToText() : void {
+    private async speechToText(): Promise<void> {
 
-        const proc = Gio.Subprocess.new(
-            ['python3', '/home/chadmar/Documents/GitHub Repo Linux/cs2080finalproject/src', 'speechtotext.py',
-                '/home/chadmar/Documents/GitHub Repo Linux/cs2080finalproject/src/Debugger.mp3'],
-            Gio.SubprocessFlags.STDOUT_PIPE | Gio.SubprocessFlags.STDERR_PIPE
-        );
+        let cmd = 'python3'
         
-        const cancellable = new Gio.Cancellable();
+        try {
+            const scriptPath = '/home/chadmar/Documents/GitHub Repo Linux/cs2080finalproject/src/speechtotext.py';
+            const audioFilePath = '/home/chadmar/Documents/GitHub Repo Linux/cs2080finalproject/src/Debugger.mp3';
             
-        proc.wait_async(cancellable, (_, result) => {
-            try {
-                const [, stdout, stderr] = proc.communicate_utf8_finish(result);
-        
-                log(`STDOUT: ${stdout}`);
-                log(`STDERR: ${stderr}`);
-        
-                console.error('Subprocess completed successfully');
-        
-                // Continue with the rest of your code...
-        
-            } catch (error) {
-                console.error(`Error waiting for the subprocess:`);
-            }
-        });
+            GLib.spawn_command_line_async(`${cmd} "${scriptPath}" "${audioFilePath}"`);
+
+        } catch (error) {
+
+            console.error('Script is unable to run:');
+
+        }
        
     }
+    // End of my function
 
     public set editMode(state: boolean) {
         this._mainStack.visible_child_name = state ? 'edit' : 'display';

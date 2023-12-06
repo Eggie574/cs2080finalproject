@@ -245,7 +245,7 @@
                                         <property name="halign">center</property>
                                         <property name="receives_default">True</property>
                                         <property name="action_name">recording.transcribe</property>
-                                        <property name="icon_name">document-open-symbolic</property>
+                                        <property name="icon_name">text-x-generic-symbolic</property>
                                         <style>
                                           <class name="circular"/>
                                         </style>

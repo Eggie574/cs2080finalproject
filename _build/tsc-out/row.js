@@ -4,13 +4,9 @@ import Gdk from 'gi://Gdk?version=4.0';
 import Gio from 'gi://Gio';
 import GObject from 'gi://GObject';
 import Gtk from 'gi://Gtk?version=4.0';
+import GLib from 'gi://GLib';
 import { displayDateTime, formatTime } from './utils.js';
 import { WaveForm, WaveType } from './waveform.js';
-/*
-declare var require : any
-const speechConversion = require('./speechtojavascript');
-*/
-//import GLib from 'gi://GLib';
 export var RowState;
 (function (RowState) {
     RowState[RowState["Playing"] = 0] = "Playing";
@@ -159,23 +155,19 @@ export class Row extends Gtk.ListBoxRow {
             this._entry.add_css_class('error');
         }
     }
-    speechToText() {
-        const proc = Gio.Subprocess.new(['python3', '/home/chadmar/Documents/GitHub Repo Linux/cs2080finalproject/src', 'speechtotext.py',
-            '/home/chadmar/Documents/GitHub Repo Linux/cs2080finalproject/src/Debugger.mp3'], Gio.SubprocessFlags.STDOUT_PIPE | Gio.SubprocessFlags.STDERR_PIPE);
-        const cancellable = new Gio.Cancellable();
-        proc.wait_async(cancellable, (_, result) => {
-            try {
-                const [, stdout, stderr] = proc.communicate_utf8_finish(result);
-                log(`STDOUT: ${stdout}`);
-                log(`STDERR: ${stderr}`);
-                console.error('Subprocess completed successfully');
-                // Continue with the rest of your code...
-            }
-            catch (error) {
-                console.error(`Error waiting for the subprocess:`);
-            }
-        });
+    // new updated code, I dont know if it works becuase I cant test in main
+    async speechToText() {
+        let cmd = 'python3';
+        try {
+            const scriptPath = '/home/chadmar/Documents/GitHub Repo Linux/cs2080finalproject/src/speechtotext.py';
+            const audioFilePath = '/home/chadmar/Documents/GitHub Repo Linux/cs2080finalproject/src/Debugger.mp3';
+            GLib.spawn_command_line_async(`${cmd} "${scriptPath}" "${audioFilePath}"`);
+        }
+        catch (error) {
+            console.error('Script is unable to run:');
+        }
     }
+    // End of my function
     set editMode(state) {
         this._mainStack.visible_child_name = state ? 'edit' : 'display';
         this._editMode = state;
