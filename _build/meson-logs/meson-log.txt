@@ -1,0 +1,135 @@
+Build started at 2023-12-05T22:06:56.461340
+Main binary: /usr/bin/python
+Build Options: -Dprofile=development -Dprefix=/app
+Python system: Linux
+The Meson build system
+Version: 1.2.3
+Source dir: /home/chadmar/Documents/GitHub Repo Linux/cs2080finalproject
+Build dir: /home/chadmar/Documents/GitHub Repo Linux/cs2080finalproject/_build
+Build type: native build
+Project name: gnome-sound-recorder
+Project version: 43.beta
+Build machine cpu family: x86_64
+Build machine cpu: x86_64
+Host machine cpu family: x86_64
+Host machine cpu: x86_64
+Target machine cpu family: x86_64
+Target machine cpu: x86_64
+Running command: /usr/bin/git rev-parse --short HEAD
+--- stdout ---
+84d3dc7
+
+--- stderr ---
+
+
+Dependency gjs-1.0 found: YES 1.78.0 (cached)
+env[PKG_CONFIG_PATH]: /app/lib/pkgconfig:/app/share/pkgconfig:/usr/lib/pkgconfig:/usr/share/pkgconfig
+-----------
+Called: `/usr/bin/pkg-config --variable=gjs_console gjs-1.0` -> 0
+stdout:
+/usr/bin/gjs-console
+-----------
+Got pkgconfig variable gjs_console : /usr/bin/gjs-console
+Dependency gio-2.0 found: YES 2.78.1 (cached)
+Dependency glib-2.0 found: YES 2.78.1 (cached)
+Dependency gtk4 found: YES 4.12.3 (cached)
+Dependency gstreamer-player-1.0 found: YES 1.22.5 (cached)
+Dependency libadwaita-1 found: YES 1.4.0 (cached)
+Dependency gobject-introspection-1.0 found: YES 1.78.1 (cached)
+Dependency gstreamer-1.0 found: YES 1.22.5 (cached)
+Dependency gstreamer-pbutils-1.0 found: YES 1.22.5 (cached)
+Program tsc found: YES (/usr/lib/sdk/typescript/bin/tsc)
+Configuring org.gnome.SoundRecorder.desktop.in using configuration
+Program msgfmt found: YES (/usr/bin/msgfmt)
+Program desktop-file-validate found: YES (/usr/bin/desktop-file-validate)
+Adding test "validate-desktop"
+Configuring org.gnome.SoundRecorderDevel.gschema.xml using configuration
+Pkg-config binary for 0 is not cached.
+Pkg-config binary missing from cross or native file, or env var undefined.
+Trying a default Pkg-config fallback at pkg-config
+Found pkg-config: /usr/bin/pkg-config (2.0.2)
+Determining dependency 'glib-2.0' with pkg-config executable '/usr/bin/pkg-config'
+env[PKG_CONFIG_PATH]: /app/lib/pkgconfig:/app/share/pkgconfig:/usr/lib/pkgconfig:/usr/share/pkgconfig
+-----------
+Called: `/usr/bin/pkg-config --modversion glib-2.0` -> 0
+stdout:
+2.78.1
+-----------
+env[PKG_CONFIG_PATH]: /app/lib/pkgconfig:/app/share/pkgconfig:/usr/lib/pkgconfig:/usr/share/pkgconfig
+-----------
+Called: `/usr/bin/pkg-config --cflags glib-2.0` -> 0
+stdout:
+-I/usr/include/glib-2.0 -I/usr/lib/x86_64-linux-gnu/glib-2.0/include -I/usr/include/sysprof-6 -pthread
+-----------
+env[PKG_CONFIG_PATH]: /app/lib/pkgconfig:/app/share/pkgconfig:/usr/lib/pkgconfig:/usr/share/pkgconfig
+env[PKG_CONFIG_ALLOW_SYSTEM_LIBS]: 1
+-----------
+Called: `/usr/bin/pkg-config --libs glib-2.0` -> 0
+stdout:
+-L/usr/lib/x86_64-linux-gnu -lglib-2.0
+-----------
+env[PKG_CONFIG_PATH]: /app/lib/pkgconfig:/app/share/pkgconfig:/usr/lib/pkgconfig:/usr/share/pkgconfig
+-----------
+Called: `/usr/bin/pkg-config --libs glib-2.0` -> 0
+stdout:
+-lglib-2.0
+-----------
+Dependency gio-2.0 found: YES 2.78.1 (cached)
+env[PKG_CONFIG_PATH]: /app/lib/pkgconfig:/app/share/pkgconfig:/usr/lib/pkgconfig:/usr/share/pkgconfig
+-----------
+Called: `/usr/bin/pkg-config --variable=glib_compile_resources gio-2.0` -> 0
+stdout:
+/usr/bin/glib-compile-resources
+-----------
+Got pkgconfig variable glib_compile_resources : /usr/bin/glib-compile-resources
+Program /usr/bin/glib-compile-resources found: YES (/usr/bin/glib-compile-resources)
+Configuring org.gnome.SoundRecorder.metainfo.xml.in using configuration
+Program appstream-util found: YES (/usr/bin/appstream-util)
+Adding test "validate-metainfo"
+Configuring org.gnome.SoundRecorderDevel using configuration
+Configuring org.gnome.SoundRecorder.src.gresource.xml using configuration
+Dependency gio-2.0 found: YES 2.78.1 (cached)
+env[PKG_CONFIG_PATH]: /app/lib/pkgconfig:/app/share/pkgconfig:/usr/lib/pkgconfig:/usr/share/pkgconfig
+Got pkgconfig variable glib_compile_resources : /usr/bin/glib-compile-resources
+Program /usr/bin/glib-compile-resources found: YES (/usr/bin/glib-compile-resources)
+Program msginit found: YES (/usr/bin/msginit)
+Program msgmerge found: YES (/usr/bin/msgmerge)
+Program xgettext found: YES (/usr/bin/xgettext)
+Dependency gio-2.0 found: YES 2.78.1 (cached)
+env[PKG_CONFIG_PATH]: /app/lib/pkgconfig:/app/share/pkgconfig:/usr/lib/pkgconfig:/usr/share/pkgconfig
+-----------
+Called: `/usr/bin/pkg-config --variable=glib_compile_schemas gio-2.0` -> 0
+stdout:
+/usr/bin/glib-compile-schemas
+-----------
+Got pkgconfig variable glib_compile_schemas : /usr/bin/glib-compile-schemas
+Program /usr/bin/glib-compile-schemas found: YES (/usr/bin/glib-compile-schemas)
+Program gtk4-update-icon-cache found: YES (/usr/bin/gtk4-update-icon-cache)
+Program update-desktop-database found: YES (/usr/bin/update-desktop-database)
+Build targets in project: 71
+
+gnome-sound-recorder 43.beta
+
+  User defined options
+    prefix : /app
+    profile: development
+
+Found ninja-1.11.1 at /usr/bin/ninja
+Failed to guess install tag for /app/share/applications/org.gnome.SoundRecorderDevel.desktop
+Failed to guess install tag for /app/share/metainfo/org.gnome.SoundRecorderDevel.metainfo.xml
+Failed to guess install tag for /app/share/icons/hicolor/scalable/apps/org.gnome.SoundRecorderDevel.svg
+Failed to guess install tag for /app/share/icons/hicolor/symbolic/apps/org.gnome.SoundRecorderDevel-symbolic.svg
+Failed to guess install tag for /app/share/glib-2.0/schemas/org.gnome.SoundRecorderDevel.gschema.xml
+Failed to guess install tag for /app/share/org.gnome.SoundRecorderDevel/org.gnome.SoundRecorderDevel
+Failed to guess install tag for install script: /usr/bin/glib-compile-schemas /app/share/glib-2.0/schemas
+Failed to guess install tag for install script: /usr/bin/gtk4-update-icon-cache -q -t -f /app/share/icons/hicolor
+Failed to guess install tag for install script: /usr/bin/update-desktop-database -q /app/share/applications
+Failed to guess install tag for /app/share/applications/org.gnome.SoundRecorderDevel.desktop
+Failed to guess install tag for /app/share/metainfo/org.gnome.SoundRecorderDevel.metainfo.xml
+Failed to guess install tag for /app/share/icons/hicolor/scalable/apps/org.gnome.SoundRecorderDevel.svg
+Failed to guess install tag for /app/share/icons/hicolor/symbolic/apps/org.gnome.SoundRecorderDevel-symbolic.svg
+Failed to guess install tag for /app/share/glib-2.0/schemas/org.gnome.SoundRecorderDevel.gschema.xml
+Failed to guess install tag for /app/share/org.gnome.SoundRecorderDevel/org.gnome.SoundRecorderDevel
+Failed to guess install tag for install script: /usr/bin/glib-compile-schemas /app/share/glib-2.0/schemas
+Failed to guess install tag for install script: /usr/bin/gtk4-update-icon-cache -q -t -f /app/share/icons/hicolor
+Failed to guess install tag for install script: /usr/bin/update-desktop-database -q /app/share/applications

@@ -148,6 +148,7 @@ export class Window extends Adw.ApplicationWindow {
         this.recorderWidget.connect(
             'stopped',
             this.onRecorderStopped.bind(this)
+
         );
         this.insert_action_group('recorder', this.recorderWidget.actionsGroup);
         this._emptyPage.icon_name = `${pkg.name}-symbolic`;

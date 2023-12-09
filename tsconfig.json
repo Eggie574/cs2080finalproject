@@ -8,6 +8,7 @@
                 "types/*",
                 "gi-types/*"
             ]
+            
         },
         "target": "ES2018",
         "baseUrl": ".",

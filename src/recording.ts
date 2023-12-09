@@ -8,6 +8,7 @@ import GstPbutils from 'gi://GstPbutils';
 import { CacheDir } from './application.js';
 import { EncodingProfiles } from './recorder.js';
 
+
 function isNumArray(input: unknown): input is number[] {
     return Array.isArray(input) && input.every((i) => typeof i === 'number');
 }
@@ -92,10 +93,13 @@ export class Recording extends GObject.Object {
         discoverer.discover_uri_async(this.uri);
     }
 
+    //getting the name of the recording 
     public get name(): string | null {
         return this._file.get_basename();
     }
 
+
+    //setting the name of the recording
     public set name(filename: string | null) {
         if (filename && filename !== this.name) {
             this._file = this._file.set_display_name(filename, null);
@@ -166,8 +170,12 @@ export class Recording extends GObject.Object {
             null,
             (obj: Gio.File, res: Gio.AsyncResult) => {
                 if (obj.copy_finish(res)) log('Exporting file: done');
+
+               
             }
+
         );
+
     }
 
     public get waveformCache(): Gio.File {

@@ -239,6 +239,18 @@
                                         </style>
                                       </object>
                                     </child>
+                                    <child>
+                                      <object class="GtkButton">
+                                        <property name="valign">center</property>
+                                        <property name="halign">center</property>
+                                        <property name="receives_default">True</property>
+                                        <property name="action_name">recording.transcribe</property>
+                                        <property name="icon_name">text-x-generic-symbolic</property>
+                                        <style>
+                                          <class name="circular"/>
+                                        </style>
+                                      </object>
+                                    </child>
                                   </object>
                                 </child>
                                 <child>
@@ -296,6 +308,10 @@
       <item>
         <attribute name="action">recording.export</attribute>
         <attribute name="label" translatable="yes">Export</attribute>
+      </item>
+      <item>
+        <attribute name="action">recording.transcribe</attribute>
+        <attribute name="label" translatable="yes">Transcribe</attribute>
       </item>
     </section>
   </menu>

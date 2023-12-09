@@ -3,6 +3,7 @@ import Gdk from 'gi://Gdk?version=4.0';
 import Gio from 'gi://Gio';
 import GObject from 'gi://GObject';
 import Gtk from 'gi://Gtk?version=4.0';
+import GLib from 'gi://GLib';
 
 import { Recording } from './recording.js';
 import { displayDateTime, formatTime } from './utils.js';
@@ -40,6 +41,7 @@ export class Row extends Gtk.ListBoxRow {
     private renameAction: Gio.SimpleAction;
     private pauseAction: Gio.SimpleAction;
     private playAction: Gio.SimpleAction;
+    private transcribeAction: Gio.SimpleAction;
     private keyController: Gtk.EventControllerKey;
 
     static {
@@ -74,7 +76,7 @@ export class Row extends Gtk.ListBoxRow {
                         'Row active status',
                         'Row active status',
                         GObject.ParamFlags.READWRITE |
-                            GObject.ParamFlags.CONSTRUCT,
+                        GObject.ParamFlags.CONSTRUCT,
                         false
                     ),
                 },
@@ -134,6 +136,7 @@ export class Row extends Gtk.ListBoxRow {
 
         const exportAction = new Gio.SimpleAction({ name: 'export' });
         exportAction.connect('activate', () => {
+
             const window = this.root as Gtk.Window;
             this.exportDialog = Gtk.FileChooserNative.new(
                 _('Export Recording'),
@@ -146,17 +149,24 @@ export class Row extends Gtk.ListBoxRow {
                 `${this.recording.name}.${this.recording.extension}`
             );
             this.exportDialog.connect(
+
                 'response',
                 (_dialog: Gtk.FileChooserNative, response: number) => {
                     if (response === Gtk.ResponseType.ACCEPT) {
+
                         const dest = this.exportDialog?.get_file();
                         if (dest) this.recording.save(dest);
+
                     }
+
                     this.exportDialog?.destroy();
                     this.exportDialog = null;
+
                 }
             );
+
             this.exportDialog.show();
+
         });
         this.actionGroup.add_action(exportAction);
 
@@ -169,6 +179,18 @@ export class Row extends Gtk.ListBoxRow {
             this.onRenameRecording.bind(this)
         );
         this.actionGroup.add_action(this.saveRenameAction);
+
+        // button for transcribe audio
+        this.transcribeAction = new Gio.SimpleAction({
+            name: 'transcribe',
+            enabled: true
+        });
+        this.transcribeAction.connect(
+            'activate',
+            this.speechToText.bind(this)
+        );
+        this.actionGroup.add_action(this.transcribeAction);
+        //end of my button
 
         this.renameAction = new Gio.SimpleAction({
             name: 'rename',
@@ -276,6 +298,32 @@ export class Row extends Gtk.ListBoxRow {
             this._entry.add_css_class('error');
         }
     }
+
+    // new updated code, I dont know if it works becuase I cant test in main
+    private async speechToText(): Promise<void> {
+
+        let cmd = '/home/chadmar/Documents/GitHub Repo Linux/cs2080finalproject/myenv/bin/python3'
+        
+        try {
+            const scriptPath = '/home/chadmar/Documents/GitHub Repo Linux/cs2080finalproject/src/speechtotext.py';
+            const audioFilePath = '/home/chadmar/Documents/GitHub Repo Linux/cs2080finalproject/src/Debugger.mp3';
+
+            const test = '/Documents/GitHub Repo Linux';
+            GLib.chdir(`"${test}"`);
+            
+            GLib.spawn_command_line_async(`${cmd} "${scriptPath}" "${audioFilePath}"`);
+
+        } catch (error) {
+
+            console.error('Script is unable to run:');
+
+        }
+
+        const returnTo = '/Documents/GitHub Repo Linux/cs2080finalproject/src'
+        GLib.chdir(`"${returnTo}"`);
+       
+    }
+    // End of my function
 
     public set editMode(state: boolean) {
         this._mainStack.visible_child_name = state ? 'edit' : 'display';

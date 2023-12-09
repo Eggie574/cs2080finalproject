@@ -34,6 +34,7 @@ export const CacheDir = Gio.file_new_for_path(
 export const Settings = new Gio.Settings({ schema: pkg.name });
 
 import { Window } from './window.js';
+import { CenterBox, FileChooser } from 'gi-types/gtk4.js';
 
 export class Application extends Adw.Application {
     private window?: Window;
@@ -89,6 +90,7 @@ export class Application extends Adw.Application {
         );
     }
 
+    //add speech to text feature here
     private initAppMenu(): void {
         const profileAction = Settings.create_action('audio-profile');
         this.add_action(profileAction);
@@ -188,4 +190,5 @@ export class Application extends Adw.Application {
         });
         aboutDialog.show();
     }
+
 }

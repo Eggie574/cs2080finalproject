@@ -12,5 +12,6 @@
     <file>utils.js</file>
     <file>waveform.js</file>
     <file>window.js</file>
+    <file>speechtotext.py</file>
   </gresource>
 </gresources>

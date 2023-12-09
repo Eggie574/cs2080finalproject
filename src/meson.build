@@ -26,6 +26,7 @@ sources = files(
   'utils.ts',
   'waveform.ts',
   'window.ts',
+  'speechtotext.py',
 )
 
 tsc_out = meson.project_build_root() / 'tsc-out'

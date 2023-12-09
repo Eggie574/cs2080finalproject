@@ -150,15 +150,19 @@
         <attribute name="target">mono</attribute>
       </item>
     </submenu>
+
     <section>
       <item>
         <attribute name="label" translatable="yes">_Keyboard Shortcuts</attribute>
         <attribute name="action">win.show-help-overlay</attribute>
       </item>
+      
       <item>
         <attribute name="action">app.about</attribute>
         <attribute name="label" translatable="yes">About Sound Recorder</attribute>
       </item>
+
     </section>
   </menu>
 </interface>
+
